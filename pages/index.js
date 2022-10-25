@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-import { getStoryblokApi } from '@storyblok/react'
+import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react'
 
-export default function Home(props) {
+export default function Home({ story }) {
+  story = useStoryblokState(story)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,11 +13,7 @@ export default function Home(props) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <header>
-        <h1>{props.story ? props.story.name : 'My Site'}</h1>
-      </header>
-
-      <main></main>
+      <StoryblokComponent blok={story.content} />
     </div>
   )
 }
@@ -30,13 +28,9 @@ export async function getStaticProps() {
   }
 
   const storyblokApi = getStoryblokApi()
-  let { data } = await storyblokApi.get(`v2/cdn/stories`, sbParams)
+  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams)
 
   console.log(data)
-
-  return {
-    props: {},
-  }
 
   return {
     props: {
