@@ -9,12 +9,12 @@ export default function Home({ story, config }) {
 
   return (
     <Layout {...config.content}>
-      <Head>
+      {/* <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
-      </Head>
+      </Head> */}
 
-      <StoryblokComponent blok={story.content} />
+      {/* <StoryblokComponent blok={story.content} /> */}
     </Layout>
   )
 }

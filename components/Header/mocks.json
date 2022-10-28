@@ -1,0 +1,56 @@
+{
+  "navLinks": [
+    {
+      "link": {
+        "link_type": "Web",
+        "url": "http://localhost:3000"
+      },
+      "linkLabel": [
+        {
+          "type": "paragraph",
+          "text": "Solutions",
+          "spans": []
+        }
+      ]
+    },
+    {
+      "link": {
+        "link_type": "Web",
+        "url": "http://localhost:3000"
+      },
+      "linkLabel": [
+        {
+          "type": "paragraph",
+          "text": "Services",
+          "spans": []
+        }
+      ]
+    },
+    {
+      "link": {
+        "link_type": "Web",
+        "url": "http://localhost:3000"
+      },
+      "linkLabel": [
+        {
+          "type": "paragraph",
+          "text": "Why Azure",
+          "spans": []
+        }
+      ]
+    }
+  ],
+  "primaryLink": {
+    "id": "YUMY6hEAACQAyCZ4",
+    "type": "contact",
+    "tags": [],
+    "slug": "contact",
+    "lang": "en-us",
+    "first_publication_date": "2021-09-16T10:14:06+0000",
+    "last_publication_date": "2021-09-16T10:53:44+0000",
+    "link_type": "Document",
+    "isBroken": false
+  },
+  "primaryLinkLabel": "Get in touch",
+  "primaryLinkStyle": "Solid"
+}

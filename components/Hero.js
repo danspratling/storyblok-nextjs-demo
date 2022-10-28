@@ -1,9 +1,6 @@
-import Link from 'next/link'
 import { storyblokEditable, StoryblokComponent } from '@storyblok/react'
 import clsx from 'clsx'
-
-// import { Link } from '../../../../components/Link'
-// import { RichText } from '../../../../components/RichText'
+import { Button } from '../components/Button'
 
 const Hero = ({ blok }) => {
   const { title, description, primary_link, primary_link_label, secondary_link, secondary_link_label, alignment } = blok
@@ -26,17 +23,12 @@ const Hero = ({ blok }) => {
           </p>
 
           <div className={clsx('flex flex-wrap mt-12 gap-3', !isLeftAligned && 'justify-center')}>
-            {primary_link.url && (
-              <Link {...editable} href={primary_link}>
-                <a className='btn btn-primary btn-xl'>{primary_link_label}</a>
-              </Link>
-            )}
-
-            {secondary_link.url && (
-              <Link {...editable} href={blok.secondary_link}>
-                <a className='btn btn-secondary btn-xl'>{secondary_link_label}</a>
-              </Link>
-            )}
+            <Button {...editable} link={primary_link} style='primary'>
+              {primary_link_label}
+            </Button>
+            <Button {...editable} link={secondary_link} style='secondary'>
+              {secondary_link_label}
+            </Button>
           </div>
         </div>
       </div>
