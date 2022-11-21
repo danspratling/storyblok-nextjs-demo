@@ -4,11 +4,13 @@ import { Layout } from '../components/Layout'
 import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react'
 
 export default function Home({ story, config }) {
-  story = useStoryblokState(story)
+  story = useStoryblokState(story, {
+    resolve_relations: ['projects.projects'],
+  })
   config = useStoryblokState(config)
 
   return (
-    <Layout {...config.content}>
+    <Layout blok={config.content}>
       <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
@@ -28,14 +30,13 @@ export async function getStaticProps() {
   const [page, config] = await Promise.all([
     storyblokApi.get(`cdn/stories/${slug}`, {
       version: 'draft', // or 'published'
+      resolve_relations: ['projects.projects'],
     }),
     storyblokApi.get('cdn/stories/site-config', {
       version: 'draft',
       // resolve_links: 'url',
     }),
   ])
-
-  console.log(page.data.story)
 
   return {
     props: {

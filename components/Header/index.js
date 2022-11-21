@@ -1,45 +1,38 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
-// import { Disclosure } from '@headlessui/react'
+import { storyblokEditable } from '@storyblok/react'
 // import { linkResolver } from '../../utils/linkResolver'
 // import { useTheme } from "next-themes";
 import { Button } from '../Button'
-import {
-  XIcon,
-  Bars3,
-  // SunIcon,
-  // MoonIcon,
-} from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
-export const Header = ({
-  logo,
-  // logoDark,
-  nav,
-  buttons,
-  // primaryLink,
-  // primaryLinkLabel,
-}) => {
+export const Header = ({ blok }) => {
+  const { header_logo, header_nav, header_buttons } = blok
+
   // const { theme, setTheme } = useTheme();
+  const editable = storyblokEditable(blok)
+  const mobileNavOpen = useState(false)
+  const toggleMobileNav = () => {
+    mobileNavOpen.value = !mobileNavOpen.value
+  }
 
   return (
-    <header>
-      {/* <Disclosure as='nav'>
-        {({ open }) => ( */}
+    <header {...editable}>
       <div className='container'>
         <div className='relative flex items-center justify-between h-20'>
           <div className='flex items-center justify-center md:flex-1 sm:items-stretch sm:justify-between'>
             {/* Main Logo */}
             <div className='w-48'>
-              <Link href='/' className='flex items-center flex-shrink-0'>
+              <Link {...editable} href='/' className='flex items-center flex-shrink-0'>
                 <a>
                   {/* {theme === "dark" ? (
                     <Image {...logoDark} className="w-auto h-8 darklogo" />
                   ) : ( */}
                   <Image
-                    src={logo.filename}
-                    alt={logo.alt}
+                    src={header_logo.filename}
+                    alt={header_logo.alt}
                     loading='eager'
                     className='w-auto h-10'
                     width='131'
@@ -53,17 +46,19 @@ export const Header = ({
 
             {/* Navigation Links */}
             <div className='items-center hidden md:flex gap-8'>
-              {nav.map((item, index) => (
-                <NavLink key={index} link={item.link} subnav={item.nav_links}>
+              {header_nav.map((item, index) => (
+                <NavLink {...editable} key={index} link={item.link} subnav={item.nav_links}>
                   {item.label}
                 </NavLink>
               ))}
             </div>
 
             <div className='hidden md:block'>
-              <Button link='/contact' style='primary'>
-                Let's work together{' '}
-              </Button>
+              {header_buttons.map((button, index) => (
+                <Button {...editable} key={index} link={button.link} style={button.style}>
+                  {button.label}
+                </Button>
+              ))}
             </div>
 
             {/* <ToggleDarkModeButton theme={theme} setTheme={setTheme} /> */}
@@ -71,30 +66,29 @@ export const Header = ({
 
           <div className='flex items-center sm:hidden'>
             {/* Mobile menu button*/}
-            {/* <Disclosure.Button className='inline-flex items-center justify-center p-2'>
-                  <span className='block w-6 h-6' aria-hidden='true'>
-                    {open ? <XIcon /> : <Bars3 />}
-                  </span>
-                  <span className='sr-only'>{open ? 'Open' : 'Close'} main menu</span>
-                </Disclosure.Button> */}
+            <button className='inline-flex items-center justify-center p-2'>
+              <span className='block w-6 h-6' aria-hidden='true'>
+                {/* {mobileNavOpen ? <XIcon /> : <Bars3 />} */}
+              </span>
+              <span className='sr-only'>{mobileNavOpen ? 'Open' : 'Close'} main menu</span>
+            </button>
           </div>
         </div>
 
         {/* Mobile Nav */}
-        {/* <Disclosure.Panel className='pt-2 pb-3 sm:hidden gap-2 grid'> */}
-        {/* {nav.map((item, index) => (
-                <Disclosure.Button key={index} as={NavLink} {...item} />
-              ))} */}
-        {/* <Link
-                href={primaryLink}
-                className={`btn ${btnStyle} text-[1rem]`}
-              >
-                {primaryLinkLabel}
-              </Link> */}
-        {/* </Disclosure.Panel> */}
+        <div className='pt-2 pb-3 sm:hidden gap-2 grid'>
+          {header_nav.map((item, index) => (
+            <NavLink key={index} link={item.link} subnav={item.nav_links}>
+              {item.label}
+            </NavLink>
+          ))}
+          {header_buttons.map((button, index) => (
+            <Button key={index} link={button.link} style={button.style}>
+              {button.label}
+            </Button>
+          ))}
+        </div>
       </div>
-      {/* )} */}
-      {/* </Disclosure> */}
     </header>
   )
 }

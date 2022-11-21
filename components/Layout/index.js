@@ -5,7 +5,7 @@ import { Header } from '../Header'
 // import { Footer } from "../Footer";
 // import { Seo } from "../SEO";
 
-export const Layout = ({ children, ...props }) => {
+export const Layout = ({ blok, children }) => {
   // const { isPreview } = useRouter();
 
   //set theme after site mounts
@@ -23,7 +23,7 @@ export const Layout = ({ children, ...props }) => {
     <>
       {/* <GlobalProvider globals={{ socials, ...provider }}> */}
       {/* <Seo {...seo} /> */}
-      <Header logo={props.header_logo} nav={props.header_nav} buttons={props.header_buttons} />
+      <Header blok={blok} />
       {/* {renderThemechanger()} */}
       {children}
       {/* <Footer {...footer.data} /> */}

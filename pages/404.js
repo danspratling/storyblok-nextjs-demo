@@ -8,7 +8,7 @@ export default function Home({ story, config }) {
   config = useStoryblokState(config)
 
   return (
-    <Layout {...config.content}>
+    <Layout blok={config.content}>
       {/* <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
@@ -34,8 +34,6 @@ export async function getStaticProps() {
       // resolve_links: 'url',
     }),
   ])
-
-  console.log(page.data.story)
 
   return {
     props: {
