@@ -1,7 +1,7 @@
 // import { useState, useEffect } from 'react'
 // import { useRouter } from 'next/router'
 // import { GlobalProvider } from "../../context/GlobalContext";
-import { Header } from '../Header'
+import { Header } from "../Header";
 // import { Footer } from "../Footer";
 // import { Seo } from "../SEO";
 
@@ -38,5 +38,5 @@ export const Layout = ({ blok, children }) => {
 
       {/* </GlobalProvider> */}
     </>
-  )
-}
+  );
+};

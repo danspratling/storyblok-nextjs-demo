@@ -6,8 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "storyblok": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem"
+    "storyblok": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
+    "format": "prettier --write \"{.storybook,components,context,docs,pages,slices,styles,utils}/**/*.{js,jsx,ts,tsx,css,scss,json,yaml,md}\"",
+    "format:check": "prettier --check '{.storybook,components,context,docs,pages,slices,styles,utils}/**/*.{js,jsx,ts,tsx,css,scss,json,yaml,md}'",
+    "lint": "eslint --fix '{components,context,pages,slices,utils}/**/*.js'",
+    "lint:check": "eslint '{components,context,pages,slices,utils}/**/*.js'"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.12",
@@ -21,9 +24,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
-    "eslint": "8.25.0",
+    "eslint": "^8.28.0",
     "eslint-config-next": "12.3.1",
     "postcss-import": "^15.0.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwindcss": "^3.2.1"
   }
 }

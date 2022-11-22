@@ -1,31 +1,35 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import Image from 'next/image'
-import { storyblokEditable } from '@storyblok/react'
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
+import { storyblokEditable } from "@storyblok/react";
 // import { linkResolver } from '../../utils/linkResolver'
 // import { useTheme } from "next-themes";
-import { Button } from '../Button'
-import clsx from 'clsx'
+import { Button } from "../Button";
+import clsx from "clsx";
 
 export const Header = ({ blok }) => {
-  const { header_logo, header_nav, header_buttons } = blok
+  const { header_logo, header_nav, header_buttons } = blok;
 
   // const { theme, setTheme } = useTheme();
-  const editable = storyblokEditable(blok)
-  const mobileNavOpen = useState(false)
+  const editable = storyblokEditable(blok);
+  const mobileNavOpen = useState(false);
   const toggleMobileNav = () => {
-    mobileNavOpen.value = !mobileNavOpen.value
-  }
+    mobileNavOpen.value = !mobileNavOpen.value;
+  };
 
   return (
     <header {...editable}>
-      <div className='container'>
-        <div className='relative flex items-center justify-between h-20'>
-          <div className='flex items-center justify-center md:flex-1 sm:items-stretch sm:justify-between'>
+      <div className="container">
+        <div className="relative flex h-20 items-center justify-between">
+          <div className="flex items-center justify-center sm:items-stretch sm:justify-between md:flex-1">
             {/* Main Logo */}
-            <div className='w-48'>
-              <Link {...editable} href='/' className='flex items-center flex-shrink-0'>
+            <div className="w-48">
+              <Link
+                {...editable}
+                href="/"
+                className="flex flex-shrink-0 items-center"
+              >
                 <a>
                   {/* {theme === "dark" ? (
                     <Image {...logoDark} className="w-auto h-8 darklogo" />
@@ -33,29 +37,39 @@ export const Header = ({ blok }) => {
                   <Image
                     src={header_logo.filename}
                     alt={header_logo.alt}
-                    loading='eager'
-                    className='w-auto h-10'
-                    width='131'
-                    height='51'
+                    loading="eager"
+                    className="h-10 w-auto"
+                    width="131"
+                    height="51"
                   />
                   {/* )} */}
-                  <span className='sr-only'>Home</span>
+                  <span className="sr-only">Home</span>
                 </a>
               </Link>
             </div>
 
             {/* Navigation Links */}
-            <div className='items-center hidden md:flex gap-8'>
+            <div className="hidden items-center gap-8 md:flex">
               {header_nav.map((item, index) => (
-                <NavLink {...editable} key={index} link={item.link} subnav={item.nav_links}>
+                <NavLink
+                  {...editable}
+                  key={index}
+                  link={item.link}
+                  subnav={item.nav_links}
+                >
                   {item.label}
                 </NavLink>
               ))}
             </div>
 
-            <div className='hidden md:block'>
+            <div className="hidden md:block">
               {header_buttons.map((button, index) => (
-                <Button {...editable} key={index} link={button.link} style={button.style}>
+                <Button
+                  {...editable}
+                  key={index}
+                  link={button.link}
+                  style={button.style}
+                >
                   {button.label}
                 </Button>
               ))}
@@ -64,19 +78,21 @@ export const Header = ({ blok }) => {
             {/* <ToggleDarkModeButton theme={theme} setTheme={setTheme} /> */}
           </div>
 
-          <div className='flex items-center sm:hidden'>
+          <div className="flex items-center sm:hidden">
             {/* Mobile menu button*/}
-            <button className='inline-flex items-center justify-center p-2'>
-              <span className='block w-6 h-6' aria-hidden='true'>
+            <button className="inline-flex items-center justify-center p-2">
+              <span className="block h-6 w-6" aria-hidden="true">
                 {/* {mobileNavOpen ? <XIcon /> : <Bars3 />} */}
               </span>
-              <span className='sr-only'>{mobileNavOpen ? 'Open' : 'Close'} main menu</span>
+              <span className="sr-only">
+                {mobileNavOpen ? "Open" : "Close"} main menu
+              </span>
             </button>
           </div>
         </div>
 
         {/* Mobile Nav */}
-        <div className='pt-2 pb-3 sm:hidden gap-2 grid'>
+        <div className="grid gap-2 pt-2 pb-3 sm:hidden">
           {header_nav.map((item, index) => (
             <NavLink key={index} link={item.link} subnav={item.nav_links}>
               {item.label}
@@ -90,8 +106,8 @@ export const Header = ({ blok }) => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
 // const ToggleDarkModeButton = ({ theme, setTheme }) => {
 //   if (theme === "dark") {
@@ -116,16 +132,16 @@ export const Header = ({ blok }) => {
 // };
 
 const NavLink = ({ link, children }) => {
-  const { pathname } = useRouter()
-  const isCurrent = pathname === link
+  const { pathname } = useRouter();
+  const isCurrent = pathname === link;
 
   return (
     <Link
       href={link.url}
-      className={clsx(isCurrent ? 'underline' : 'no-underline')}
-      aria-current={isCurrent ? 'page' : undefined}
+      className={clsx(isCurrent ? "underline" : "no-underline")}
+      aria-current={isCurrent ? "page" : undefined}
     >
       <a>{children}</a>
     </Link>
-  )
-}
+  );
+};

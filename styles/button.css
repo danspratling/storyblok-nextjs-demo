@@ -1,35 +1,35 @@
 .btn {
-  @apply inline-flex items-center justify-center gap-2 px-3 py-2 font-normal text-lg transition duration-200 ease-in-out no-underline outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600;
+  @apply inline-flex items-center justify-center gap-2 px-3 py-2 text-lg font-normal no-underline outline-none transition duration-200 ease-in-out focus:ring-2 focus:ring-gray-600 focus:ring-offset-2;
 }
 
 .btn-primary {
-  @apply rounded-xl bg-gray-800 shadow-d-md hover:shadow-d-sm text-white hover:bg-black  dark:bg-white dark:text-gray-700 dark:hover:bg-gray-100 dark:hover:text-black;
+  @apply rounded-xl bg-gray-800 text-white shadow-d-md hover:bg-black hover:shadow-d-sm  dark:bg-white dark:text-gray-700 dark:hover:bg-gray-100 dark:hover:text-black;
 }
 
 .btn-secondary {
-  @apply rounded-xl bg-white shadow-d-md hover:shadow-d-sm text-gray-800 hover:text-black dark:bg-gray-800 dark:text-white dark:hover:bg-black;
+  @apply rounded-xl bg-white text-gray-800 shadow-d-md hover:text-black hover:shadow-d-sm dark:bg-gray-800 dark:text-white dark:hover:bg-black;
 }
 
 .btn-tertiary {
-  @apply text-gray-900 dark:text-gray-50 hover:text-gray-800;
+  @apply text-gray-900 hover:text-gray-800 dark:text-gray-50;
 }
 
 .btn-white {
-  @apply rounded-xl bg-white shadow-d-md hover:shadow-d-sm text-gray-800 hover:text-black;
+  @apply rounded-xl bg-white text-gray-800 shadow-d-md hover:text-black hover:shadow-d-sm;
 }
 
 .btn-md {
-  @apply px-5 md:px-6 py-2.5 md:py-3 text-sm;
+  @apply px-5 py-2.5 text-sm md:px-6 md:py-3;
 }
 
 .btn-lg {
-  @apply px-5 md:px-6 py-2.5 md:py-3 text-base;
+  @apply px-5 py-2.5 text-base md:px-6 md:py-3;
 }
 
 .btn-xl {
-  @apply px-5 md:px-7 py-2.5 md:py-3.5 md:text-lg;
+  @apply px-5 py-2.5 md:px-7 md:py-3.5 md:text-lg;
 }
 
 .btn-2xl {
-  @apply px-6 md:px-8 py-3 md:py-4 text-lg md:text-2xl;
+  @apply px-6 py-3 text-lg md:px-8 md:py-4 md:text-2xl;
 }

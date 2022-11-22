@@ -1,17 +1,17 @@
 /* Using JIT mode, see tailwind's limitations with this mode here https://tailwindcss.com/docs/just-in-time-mode#known-limitations */
-@import 'tailwindcss/base';
+@import "tailwindcss/base";
 
-@import 'tailwindcss/components';
-@import './button.css';
+@import "tailwindcss/components";
+@import "./button.css";
 
-@import 'tailwindcss/utilities';
+@import "tailwindcss/utilities";
 
 * {
   @apply antialiased;
 }
 
 body {
-  @apply text-gray-900 dark:text-gray-50 bg-gray-25 dark:bg-gray-900;
+  @apply bg-gray-25 text-gray-900 dark:bg-gray-900 dark:text-gray-50;
 }
 
 html {
@@ -19,37 +19,38 @@ html {
   scroll-padding-top: 2em;
 }
 
-[class*='prose'] a:not(.btn) {
-  @apply underline font-medium transition duration-200;
+[class*="prose"] a:not(.btn) {
+  @apply font-medium underline transition duration-200;
 }
 
-[class*='prose'] a:not(.btn):not([class*='text-']) {
+[class*="prose"] a:not(.btn):not([class*="text-"]) {
   @apply text-blue-600;
 }
 
-[class*='prose'] a:not(.btn):not([class*='text-']):visited {
+[class*="prose"] a:not(.btn):not([class*="text-"]):visited {
   @apply text-purple-800;
 }
 
-[class*='prose'] a:not(.btn):not([class*='hover']) {
+[class*="prose"] a:not(.btn):not([class*="hover"]) {
   @apply hover:text-gray-600;
 }
 
-[class*='prose'] a:not(.btn):not([class*='focus']) {
+[class*="prose"] a:not(.btn):not([class*="focus"]) {
   @apply focus:text-gray-600;
 }
 
-[class*='prose'] ol {
+[class*="prose"] ol {
   @apply list-decimal;
 }
 
 /* rubik-latin-variable-wghtOnly-normal */
 @font-face {
-  font-family: 'RubikVariable';
+  font-family: "RubikVariable";
   font-style: normal;
   font-display: optional;
   font-weight: 300 900;
-  src: url('/fonts/rubik-latin-variable-wghtOnly-normal.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
-    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url("/fonts/rubik-latin-variable-wghtOnly-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }

@@ -1,11 +1,15 @@
-import Head from 'next/head'
-import { Layout } from '../components/Layout'
+import Head from "next/head";
+import { Layout } from "../components/Layout";
 
-import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react'
+import {
+  useStoryblokState,
+  getStoryblokApi,
+  StoryblokComponent,
+} from "@storyblok/react";
 
 export default function Home({ story, config }) {
-  story = useStoryblokState(story)
-  config = useStoryblokState(config)
+  story = useStoryblokState(story);
+  config = useStoryblokState(config);
 
   return (
     <Layout blok={config.content}>
@@ -16,24 +20,24 @@ export default function Home({ story, config }) {
 
       {/* <StoryblokComponent blok={story.content} /> */}
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
   // home is the default slug for the homepage in Storyblok
-  let slug = 'home'
+  let slug = "home";
 
-  const storyblokApi = getStoryblokApi()
+  const storyblokApi = getStoryblokApi();
 
   const [page, config] = await Promise.all([
     storyblokApi.get(`cdn/stories/${slug}`, {
-      version: 'draft', // or 'published'
+      version: "draft", // or 'published'
     }),
-    storyblokApi.get('cdn/stories/site-config', {
-      version: 'draft',
+    storyblokApi.get("cdn/stories/site-config", {
+      version: "draft",
       // resolve_links: 'url',
     }),
-  ])
+  ]);
 
   return {
     props: {
@@ -42,5 +46,5 @@ export async function getStaticProps() {
       config: config ? config.data.story : false,
     },
     revalidate: 3600, // revalidate every hour
-  }
+  };
 }
