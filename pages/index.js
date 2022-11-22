@@ -1,42 +1,46 @@
-import Head from 'next/head'
-import { Layout } from '../components/Layout'
+import Head from "next/head";
+import { Layout } from "../components/Layout";
 
-import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react'
+import {
+  useStoryblokState,
+  getStoryblokApi,
+  StoryblokComponent,
+} from "@storyblok/react";
 
 export default function Home({ story, config }) {
   story = useStoryblokState(story, {
-    resolve_relations: ['projects.projects'],
-  })
-  config = useStoryblokState(config)
+    resolve_relations: ["projects.projects", "testimonial.project"],
+  });
+  config = useStoryblokState(config);
 
   return (
     <Layout blok={config.content}>
       <Head>
         <title>Create Next App</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <StoryblokComponent blok={story.content} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
   // home is the default slug for the homepage in Storyblok
-  let slug = 'home'
+  let slug = "home";
 
-  const storyblokApi = getStoryblokApi()
+  const storyblokApi = getStoryblokApi();
 
   const [page, config] = await Promise.all([
     storyblokApi.get(`cdn/stories/${slug}`, {
-      version: 'draft', // or 'published'
-      resolve_relations: ['projects.projects'],
+      version: "draft", // or 'published'
+      resolve_relations: ["projects.projects", "testimonial.project"],
     }),
-    storyblokApi.get('cdn/stories/site-config', {
-      version: 'draft',
+    storyblokApi.get("cdn/stories/site-config", {
+      version: "draft",
       // resolve_links: 'url',
     }),
-  ])
+  ]);
 
   return {
     props: {
@@ -45,5 +49,5 @@ export async function getStaticProps() {
       config: config ? config.data.story : false,
     },
     revalidate: 3600, // revalidate every hour
-  }
+  };
 }
