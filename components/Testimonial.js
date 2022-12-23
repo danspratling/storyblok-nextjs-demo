@@ -1,11 +1,17 @@
+import { storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
 import { RichText } from "./RichText";
 
 const Testimonial = ({ blok }) => {
-  const { quote, author, avatar, role, project } = blok;
+  const editable = storyblokEditable(blok);
+  const { testimonial } = blok;
+
+  return testimonial;
+
+  const { quote, author, avatar, role, project } = testimonial[0].content;
 
   return (
-    <section className="py-12 md:py-20">
+    <section {...editable} className="py-12 md:py-20">
       <div className="container">
         <div className="mx-auto bg-gray-100 px-8 py-10 dark:bg-gray-700 md:p-12">
           <RichText

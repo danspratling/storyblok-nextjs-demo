@@ -12,6 +12,6 @@ function createMarkup(storyblokHTML) {
   };
 }
 
-export const RichText = ({ data }) => {
-  return <div dangerouslySetInnerHTML={createMarkup(data)} />;
+export const RichText = ({ data, ...props }) => {
+  return <div dangerouslySetInnerHTML={createMarkup(data)} {...props} />;
 };

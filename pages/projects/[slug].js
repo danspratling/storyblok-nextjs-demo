@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Layout } from "../components/Layout";
+import { Layout } from "../../components/Layout";
 
 import {
   useStoryblokState,
@@ -26,19 +26,25 @@ export default function Home({ story, config }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* <div>
+        <h1>{story.content.title}</h1>
+        <p>{story.content.description}</p>
+      </div> */}
+
+      {console.log(story.content)}
+
       <StoryblokComponent blok={story.content} />
     </Layout>
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
   // home is the default slug for the homepage in Storyblok
-  let slug = "home";
-
+  let slug = params.slug;
   const storyblokApi = getStoryblokApi();
 
   const [page, config] = await Promise.all([
-    storyblokApi.get(`cdn/stories/${slug}`, {
+    storyblokApi.get(`cdn/stories/projects/${slug}`, {
       version: "draft", // or 'published'
       resolve_relations,
     }),
@@ -56,4 +62,19 @@ export async function getStaticProps() {
     },
     revalidate: 3600, // revalidate every hour
   };
+}
+
+export async function getStaticPaths() {
+  const storyblokApi = getStoryblokApi();
+  let { data } = await storyblokApi.get(`cdn/stories/`, {
+    version: "draft", // or 'published'
+    starts_with: "projects/",
+    is_startpage: false,
+  });
+
+  const paths = await data.stories.map((story) => ({
+    params: { slug: story.slug },
+  }));
+
+  return { paths, fallback: false };
 }

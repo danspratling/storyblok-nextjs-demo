@@ -1,11 +1,13 @@
+import { storyblokEditable } from "@storyblok/react";
 import { RichText } from "./RichText";
 import { Button } from "./Button";
 
 const Logos = ({ blok }) => {
+  const editable = storyblokEditable(blok);
   const { title, description, buttons, logos } = blok;
 
   return (
-    <section className="py-12 md:py-20">
+    <section {...editable} className="py-12 md:py-20">
       <div className="container">
         <div className="mx-auto max-w-5xl text-center">
           <h2 className="mb-8 text-3xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl">

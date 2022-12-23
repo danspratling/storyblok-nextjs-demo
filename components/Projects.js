@@ -1,10 +1,11 @@
+import { storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
 import { RichText } from "./RichText";
 import { Button } from "./Button";
 
 const Projects = ({ blok }) => {
+  const editable = storyblokEditable(blok);
   const { title, description, buttons, projects } = blok;
-  console.log(blok);
 
   return (
     <section className="py-12 md:py-20">
