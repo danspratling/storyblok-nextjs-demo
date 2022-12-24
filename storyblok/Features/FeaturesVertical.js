@@ -1,5 +1,5 @@
 import { storyblokEditable } from "@storyblok/react";
-import { Button } from "../Button";
+import { Button } from "../../components/Button";
 import Feature from "./Feature";
 
 const Features = ({ blok }) => {

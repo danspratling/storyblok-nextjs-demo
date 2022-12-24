@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import clsx from "clsx";
-import { Button } from "../components/Button";
+import { Button } from "../../components/Button";
 
 const Hero = ({ blok }) => {
   const { title, description, buttons, alignment } = blok;

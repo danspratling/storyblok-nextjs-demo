@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import clsx from "clsx";
-import { RichText } from "./RichText";
+import { RichText } from "../../components/RichText";
 
 const TextSection = ({ blok }) => {
   const editable = storyblokEditable(blok);

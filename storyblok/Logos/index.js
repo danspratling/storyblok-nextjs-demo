@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
-import { RichText } from "./RichText";
-import { Button } from "./Button";
+import { RichText } from "../../components/RichText";
+import { Button } from "../../components/Button";
 
 const Logos = ({ blok }) => {
   const editable = storyblokEditable(blok);

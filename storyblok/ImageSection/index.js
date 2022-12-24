@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import clsx from "clsx";
-import Image from "../Image";
+import Image from "../../components/Image";
 import styles from "./styles.module.css";
 
 const ImageSection = ({ blok }) => {
