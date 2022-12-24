@@ -26,19 +26,17 @@ export default function Home({ story, config }) {
 }
 
 export async function getStaticProps() {
-  // home is the default slug for the homepage in Storyblok
-  let slug = "home";
-
   const storyblokApi = getStoryblokApi();
 
   const [page, config] = await Promise.all([
-    storyblokApi.get(`cdn/stories/${slug}`, {
+    storyblokApi.get(`cdn/stories/home`, {
       version: "draft", // or 'published'
       resolve_relations,
+      resolve_links: "url",
     }),
     storyblokApi.get("cdn/stories/site-config", {
       version: "draft",
-      // resolve_links: 'url',
+      resolve_links: "url",
     }),
   ]);
 

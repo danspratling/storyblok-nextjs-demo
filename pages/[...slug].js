@@ -33,10 +33,11 @@ export async function getStaticProps({ params }) {
     storyblokApi.get(`cdn/stories/${slug}`, {
       version: "draft", // or 'published'
       resolve_relations,
+      resolve_links: "url",
     }),
     storyblokApi.get("cdn/stories/site-config", {
       version: "draft",
-      // resolve_links: 'url',
+      resolve_links: "url",
     }),
   ]);
 
