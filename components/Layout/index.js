@@ -1,12 +1,12 @@
 import Head from "next/head";
 // import { useState, useEffect } from 'react'
 // import { useRouter } from 'next/router'
-// import { GlobalProvider } from "../../context/GlobalContext";
+import { GlobalProvider } from "../../context/GlobalContext";
 import { Header } from "../Header";
 // import { Footer } from "../Footer";
 // import { Seo } from "../SEO";
 
-export const Layout = ({ blok, children }) => {
+export const Layout = ({ blok, provider, children }) => {
   // const { isPreview } = useRouter();
 
   //set theme after site mounts
@@ -22,18 +22,18 @@ export const Layout = ({ blok, children }) => {
 
   return (
     <>
-      {/* <GlobalProvider globals={{ socials, ...provider }}> */}
-      {/* <Seo {...seo} /> */}
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <GlobalProvider globals={{ ...provider }}>
+        {/* <Seo {...seo} /> */}
+        <Head>
+          <title>Create Next App</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <Header blok={blok} />
-      {/* {renderThemechanger()} */}
-      {children}
-      {/* <Footer {...footer.data} /> */}
-      {/* {isPreview ? (
+        <Header blok={blok} />
+        {/* {renderThemechanger()} */}
+        {children}
+        {/* <Footer {...footer.data} /> */}
+        {/* {isPreview ? (
         <a
           className="fixed bottom-0 right-0 m-6 bg-white border-2 border-black shadow-lg btn btn-accent hover:bg-black hover:text-white"
           href="/api/exit-preview"
@@ -41,8 +41,7 @@ export const Layout = ({ blok, children }) => {
           Exit Preview
         </a>
       ) : null} */}
-
-      {/* </GlobalProvider> */}
+      </GlobalProvider>
     </>
   );
 };

@@ -130,12 +130,15 @@ export const Header = ({ blok }) => {
 // };
 
 const NavLink = ({ link, children }) => {
+  const url = link?.story?.url || link?.url;
+  if (!url) return null;
+
   const { pathname } = useRouter();
-  const isCurrent = pathname === link;
+  const isCurrent = pathname === url;
 
   return (
     <Link
-      href={link.url}
+      href={`/${url}`}
       className={clsx(isCurrent ? "underline" : "no-underline")}
       aria-current={isCurrent ? "page" : undefined}
     >

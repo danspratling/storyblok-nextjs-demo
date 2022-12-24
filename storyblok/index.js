@@ -15,4 +15,5 @@ export const components = {
 
   // Templates
   page: dynamic(() => import("./Page")),
+  team_member: null, // We have a team_member template but the page is handled directly so no component needed
 };

@@ -1,4 +1,5 @@
-import { Layout } from "../components/Layout";
+import { Layout } from "../../components/Layout";
+import PeopleHero from "../../components/PeopleHero";
 
 import {
   useStoryblokState,
@@ -12,25 +13,26 @@ const resolve_relations = [
   "testimonial.project",
 ];
 
-export default function Home({ story, config, provider }) {
+export default function TeamMember({ story, config }) {
   story = useStoryblokState(story, {
     resolve_relations,
   });
   config = useStoryblokState(config);
 
   return (
-    <Layout blok={config.content} provider={provider}>
-      <StoryblokComponent blok={story.content} />
+    <Layout blok={config.content}>
+      <PeopleHero blok={story.content} />
+      {/* <StoryblokComponent blok={story.content} /> */}
     </Layout>
   );
 }
 
 export async function getStaticProps({ params }) {
   const storyblokApi = getStoryblokApi();
-  const slug = params.slug?.join("/");
+  const slug = params.slug;
 
-  const [page, config, team] = await Promise.all([
-    storyblokApi.get(`cdn/stories/${slug}`, {
+  const [page, config] = await Promise.all([
+    storyblokApi.get(`cdn/stories/team/${slug}`, {
       version: "draft", // or 'published'
       resolve_relations,
       resolve_links: "url",
@@ -39,11 +41,6 @@ export async function getStaticProps({ params }) {
       version: "draft",
       resolve_links: "url",
     }),
-    storyblokApi.get("cdn/stories", {
-      version: "draft",
-      content_type: "team_member",
-      sort_by: "content.start_date:asc",
-    }),
   ]);
 
   return {
@@ -51,9 +48,6 @@ export async function getStaticProps({ params }) {
       key: page ? page.data.story.id : false,
       story: page ? page.data.story : false,
       config: config ? config.data.story : false,
-      provider: {
-        teamMembers: team ? team.data.stories : [],
-      },
     },
     revalidate: 3600, // revalidate every hour
   };
@@ -63,12 +57,12 @@ export async function getStaticPaths() {
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get(`cdn/stories/`, {
     version: "draft", // or 'published'
-    excluding_slugs: "site-config, team*",
+    starts_with: "team",
   });
 
   const paths = await data.stories.map((story) => ({
     params: {
-      slug: story.full_slug.split("/"),
+      slug: story.slug,
     },
   }));
 
