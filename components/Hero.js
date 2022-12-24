@@ -3,15 +3,7 @@ import clsx from "clsx";
 import { Button } from "../components/Button";
 
 const Hero = ({ blok }) => {
-  const {
-    title,
-    description,
-    primary_link,
-    primary_link_label,
-    secondary_link,
-    secondary_link_label,
-    alignment,
-  } = blok;
+  const { title, description, buttons, alignment } = blok;
   const editable = storyblokEditable(blok);
   const isCenterAligned = alignment === "center";
 
@@ -24,27 +16,34 @@ const Hero = ({ blok }) => {
             isCenterAligned && "mx-auto text-center"
           )}
         >
-          <h1 className="mb-8 text-5xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-6xl lg:text-7xl">
+          <h1
+            {...editable}
+            className="mb-8 text-5xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-6xl lg:text-7xl"
+          >
             {title}
           </h1>
 
-          <p className="text-lg font-light text-gray-700 dark:text-gray-200 md:text-xl lg:text-2xl">
+          <p
+            {...editable}
+            className="text-lg font-light text-gray-700 dark:text-gray-200 md:text-xl lg:text-2xl"
+          >
             {description}
           </p>
 
-          <div
-            className={clsx(
-              "mt-12 flex flex-wrap gap-3",
-              isCenterAligned && "justify-center"
-            )}
-          >
-            <Button link={primary_link} style="primary">
-              {primary_link_label}
-            </Button>
-            <Button link={secondary_link} style="secondary">
-              {secondary_link_label}
-            </Button>
-          </div>
+          {buttons.length ? (
+            <div
+              className={clsx(
+                "mt-12 flex flex-wrap gap-3",
+                isCenterAligned && "justify-center"
+              )}
+            >
+              {buttons.map((button, index) => (
+                <Button key={index} link={button.link} style={button.style}>
+                  {button.label}
+                </Button>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>

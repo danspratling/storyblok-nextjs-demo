@@ -27,7 +27,7 @@ const Projects = ({ blok }) => {
           ))}
         </div>
 
-        {buttons.length && (
+        {buttons.length ? (
           <div className="flex flex-wrap justify-center gap-3">
             {buttons.map((button, index) => (
               <Button key={index} link={button.link} style={button.style}>
@@ -35,7 +35,7 @@ const Projects = ({ blok }) => {
               </Button>
             ))}
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

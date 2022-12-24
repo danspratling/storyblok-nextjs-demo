@@ -10,8 +10,8 @@ export const Button = ({ link, style, children }) => {
   };
 
   return (
-    <Link href={link}>
-      <a className={`btn ${styles[style]} btn-xl`}>{children}</a>
+    <Link href={link} className={`btn ${styles[style]} btn-xl`}>
+      {children}
     </Link>
   );
 };

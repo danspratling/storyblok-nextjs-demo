@@ -1,5 +1,4 @@
-import Head from "next/head";
-import { Layout } from "../../components/Layout";
+import { Layout } from "../components/Layout";
 
 import {
   useStoryblokState,
@@ -21,30 +20,17 @@ export default function Home({ story, config }) {
 
   return (
     <Layout blok={config.content}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      {/* <div>
-        <h1>{story.content.title}</h1>
-        <p>{story.content.description}</p>
-      </div> */}
-
-      {console.log(story.content)}
-
       <StoryblokComponent blok={story.content} />
     </Layout>
   );
 }
 
 export async function getStaticProps({ params }) {
-  // home is the default slug for the homepage in Storyblok
-  let slug = params.slug;
   const storyblokApi = getStoryblokApi();
+  let slug = params.slug?.join("/");
 
   const [page, config] = await Promise.all([
-    storyblokApi.get(`cdn/stories/projects/${slug}`, {
+    storyblokApi.get(`cdn/stories/${slug}`, {
       version: "draft", // or 'published'
       resolve_relations,
     }),
@@ -68,12 +54,12 @@ export async function getStaticPaths() {
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get(`cdn/stories/`, {
     version: "draft", // or 'published'
-    starts_with: "projects/",
-    is_startpage: false,
   });
 
   const paths = await data.stories.map((story) => ({
-    params: { slug: story.slug },
+    params: {
+      slug: story.full_slug.split("/"),
+    },
   }));
 
   return { paths, fallback: false };

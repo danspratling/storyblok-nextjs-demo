@@ -30,21 +30,19 @@ export const Header = ({ blok }) => {
                 href="/"
                 className="flex flex-shrink-0 items-center"
               >
-                <a>
-                  {/* {theme === "dark" ? (
+                {/* {theme === "dark" ? (
                     <Image {...logoDark} className="w-auto h-8 darklogo" />
                   ) : ( */}
-                  <Image
-                    src={header_logo.filename}
-                    alt={header_logo.alt}
-                    loading="eager"
-                    className="h-10 w-auto"
-                    width="131"
-                    height="51"
-                  />
-                  {/* )} */}
-                  <span className="sr-only">Home</span>
-                </a>
+                <Image
+                  src={header_logo.filename}
+                  alt={header_logo.alt}
+                  loading="eager"
+                  className="h-10 w-auto"
+                  width="131"
+                  height="51"
+                />
+                {/* )} */}
+                <span className="sr-only">Home</span>
               </Link>
             </div>
 
@@ -141,7 +139,7 @@ const NavLink = ({ link, children }) => {
       className={clsx(isCurrent ? "underline" : "no-underline")}
       aria-current={isCurrent ? "page" : undefined}
     >
-      <a>{children}</a>
+      {children}
     </Link>
   );
 };

@@ -36,7 +36,7 @@ const Logos = ({ blok }) => {
               key={index}
               src={logo.filename}
               alt={logo.alt}
-              className="w-auto py-6"
+              className="max-h-24 w-auto py-6"
             />
           ))}
         </div>

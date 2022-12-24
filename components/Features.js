@@ -1,5 +1,4 @@
 import { storyblokEditable } from "@storyblok/react";
-import clsx from "clsx";
 import { Button } from "../components/Button";
 
 const Features = ({ blok }) => {
@@ -12,9 +11,14 @@ const Features = ({ blok }) => {
       <div className="container flex justify-center">
         <div className="flex w-full flex-col items-center justify-between gap-8 text-center lg:gap-12">
           <div className="flex flex-col items-center lg:max-w-4xl">
-            <h2 className="mb-5 text-3xl leading-10 lg:text-4xl">{title}</h2>
+            <h2 {...editable} className="mb-5 text-3xl leading-10 lg:text-4xl">
+              {title}
+            </h2>
 
-            <p className="mb-8 text-xl font-light leading-8 text-gray-500 dark:text-gray-300 lg:text-2xl">
+            <p
+              {...editable}
+              className="mb-8 text-xl font-light leading-8 text-gray-500 dark:text-gray-300 lg:text-2xl"
+            >
               {description}
             </p>
           </div>
@@ -25,7 +29,7 @@ const Features = ({ blok }) => {
             ))}
           </div>
 
-          {buttons.length && (
+          {buttons.length ? (
             <div className="flex flex-wrap justify-center gap-3">
               {buttons.map((button, index) => (
                 <Button key={index} link={button.link} style={button.style}>
@@ -33,7 +37,7 @@ const Features = ({ blok }) => {
                 </Button>
               ))}
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </section>

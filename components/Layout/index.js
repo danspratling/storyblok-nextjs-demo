@@ -1,3 +1,4 @@
+import Head from "next/head";
 // import { useState, useEffect } from 'react'
 // import { useRouter } from 'next/router'
 // import { GlobalProvider } from "../../context/GlobalContext";
@@ -23,6 +24,11 @@ export const Layout = ({ blok, children }) => {
     <>
       {/* <GlobalProvider globals={{ socials, ...provider }}> */}
       {/* <Seo {...seo} /> */}
+      <Head>
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Header blok={blok} />
       {/* {renderThemechanger()} */}
       {children}

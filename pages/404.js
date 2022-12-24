@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Layout } from "../components/Layout";
 
 import {
@@ -13,11 +12,7 @@ export default function Home({ story, config }) {
 
   return (
     <Layout blok={config.content}>
-      {/* <Head>
-        <title>Create Next App</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head> */}
-
+      <h1>404 Page not found</h1>
       {/* <StoryblokComponent blok={story.content} /> */}
     </Layout>
   );

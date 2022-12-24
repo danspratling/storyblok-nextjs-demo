@@ -1,6 +1,7 @@
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import "../styles/globals.css";
 
+import BlogSection from "../components/BlogSection";
 import Features from "../components/Features";
 import Grid from "../components/Grid";
 import Hero from "../components/Hero";
@@ -13,6 +14,7 @@ import TextSection from "../components/TextSection";
 
 const components = {
   // Sections
+  blog_section: BlogSection,
   features: Features,
   grid: Grid,
   hero: Hero,
@@ -20,7 +22,7 @@ const components = {
   logos: Logos,
   projects: Projects,
   project: Page,
-  testimonial_section: Testimonial,
+  // testimonial_section: Testimonial,
   text_section: TextSection,
 
   // Templates
