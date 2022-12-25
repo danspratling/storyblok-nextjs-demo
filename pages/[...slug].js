@@ -9,7 +9,7 @@ import {
 const resolve_relations = [
   "projects.projects",
   "testimonial_section.testimonial",
-  "testimonial.project",
+  // "testimonial.project",
 ];
 
 export default function Home({ story, config, provider }) {

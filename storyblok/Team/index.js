@@ -27,7 +27,7 @@ const Team = ({ blok }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:gap-8 xl:grid-cols-5">
+        <div className="mb-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:gap-8 xl:grid-cols-5">
           {teamMembers.map((teamMember, index) => (
             <TeamMember key={index} {...teamMember} />
           ))}

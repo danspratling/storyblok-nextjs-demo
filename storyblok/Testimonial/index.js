@@ -6,8 +6,6 @@ const Testimonial = ({ blok }) => {
   const editable = storyblokEditable(blok);
   const { testimonial } = blok;
 
-  return testimonial;
-
   const { quote, author, avatar, role, project } = testimonial[0].content;
 
   return (
@@ -19,18 +17,15 @@ const Testimonial = ({ blok }) => {
             className="text-center text-lg font-light italic md:text-xl"
           />
 
-          <Link
-            href={project.full_slug}
-            className="mt-8 flex flex-wrap items-center justify-center gap-4 text-center sm:text-left"
-          >
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-center sm:text-left">
             <div className="flex w-full justify-center sm:w-auto">
-              <img
+              {/* <img
                 src={project.content.logo_square.filename}
                 alt={project.content.logo_square.alt}
                 width={48}
                 height={48}
                 className="rounded-full bg-white dark:bg-black"
-              />
+              /> */}
               <img
                 src={avatar.filename}
                 alt={avatar.alt}
@@ -43,10 +38,11 @@ const Testimonial = ({ blok }) => {
             <div>
               <p className="text-lg font-bold">{author}</p>
               <p className="text-gray-500 dark:text-gray-300">
-                {role} at {project.content.name}
+                {role} at{" "}
+                <Link href={project.full_slug}>{project.content.name}</Link>
               </p>
             </div>
-          </Link>
+          </div>
         </div>
       </div>
     </section>

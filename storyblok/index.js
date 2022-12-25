@@ -8,9 +8,10 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   image_section: dynamic(() => import("./ImageSection")),
   logos: dynamic(() => import("./Logos")),
+  newsletter_section: dynamic(() => import("./Newsletter")),
   projects: dynamic(() => import("./Projects")),
   team: dynamic(() => import("./Team")),
-  // testimonial_section: Testimonial,
+  // testimonial_section: dynamic(() => import("./Testimonial")),
   text_section: dynamic(() => import("./TextSection")),
 
   // Templates
