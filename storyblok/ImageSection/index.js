@@ -5,11 +5,15 @@ import styles from "./styles.module.css";
 
 const ImageSection = ({ blok }) => {
   const editable = storyblokEditable(blok);
-  const { image, layout } = blok;
+  const { image, layout, spacing } = blok;
   const isContained = layout === "contained";
+  const noSpacing = spacing === "none";
 
   return (
-    <section {...editable} className={clsx(styles[layout], "py-12 md:py-20")}>
+    <section
+      {...editable}
+      className={clsx(styles[layout], !noSpacing && "py-12 md:py-20")}
+    >
       <div className={clsx(isContained && "container")}>
         <div
           className={clsx(

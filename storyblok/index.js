@@ -10,12 +10,13 @@ export const components = {
   image_section: dynamic(() => import("./ImageSection")),
   logos: dynamic(() => import("./Logos")),
   newsletter_section: dynamic(() => import("./Newsletter")),
-  projects: dynamic(() => import("./Projects")),
+  project_section: dynamic(() => import("./ProjectSection")),
   team: dynamic(() => import("./Team")),
   // testimonial_section: dynamic(() => import("./Testimonial")),
   text_section: dynamic(() => import("./TextSection")),
 
   // Templates
   page: dynamic(() => import("./Page")),
+  project: dynamic(() => import("./Project")),
   team_member: null, // We have a team_member template but the page is handled directly so no component needed
 };

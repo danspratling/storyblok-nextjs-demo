@@ -7,7 +7,7 @@ import {
 } from "@storyblok/react";
 
 const resolve_relations = [
-  "projects.projects",
+  "project_section.projects",
   "testimonial_section.testimonial",
   "testimonial.project",
 ];

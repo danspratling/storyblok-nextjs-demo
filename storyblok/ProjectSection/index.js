@@ -8,14 +8,18 @@ const Projects = ({ blok }) => {
   const { title, description, buttons, projects } = blok;
 
   return (
-    <section className="py-12 md:py-20">
+    <section {...editable} className="py-12 md:py-20">
       <div className="container">
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="mb-8 text-3xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl">
+          <h2
+            {...editable}
+            className="mb-8 text-3xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl"
+          >
             {title}
           </h2>
 
           <RichText
+            {...editable}
             data={description}
             className="mb-12 text-lg font-light text-gray-700 dark:text-gray-200 md:text-xl lg:text-2xl"
           />
