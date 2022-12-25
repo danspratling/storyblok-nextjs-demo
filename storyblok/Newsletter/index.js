@@ -8,7 +8,7 @@ const Newsletter = ({ blok }) => {
   return (
     <section {...editable} className="py-12 md:py-20">
       <div className="container">
-        <div className="grid items-center text-center">
+        <div className="mx-auto grid max-w-6xl items-center text-center">
           <h2
             {...editable}
             className="mb-8 text-3xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl"

@@ -13,8 +13,8 @@ export const NewsletterForm = ({
 }) => {
   const { register, handleSubmit } = useForm();
 
-  const subscribe = async ({ email }) => {
-    await fetch(`/api/subscribe?email=${email}`);
+  const subscribe = async ({ first_name, email }) => {
+    await fetch(`/api/subscribe?first_name=${first_name}&email=${email}`);
   };
 
   const {
@@ -26,7 +26,13 @@ export const NewsletterForm = ({
     // reset
   } = useMutation((data) => subscribe(data));
 
-  const onSubmit = (data) => mutate(data);
+  const onSubmit = (data) => {
+    const formattedData = {
+      first_name: data.name.split(" ")[0],
+      ...data,
+    };
+    mutate(formattedData);
+  };
 
   if (isSuccess) {
     return (
@@ -48,12 +54,25 @@ export const NewsletterForm = ({
     >
       <div className={`w-full min-w-min ${vertical ? "flex-1" : "md:w-1/2"}`}>
         <Input
+          name="name"
+          label="Name"
+          hideLabel
+          type="text"
+          required
+          placeholder="Your name"
+          register={register}
+          autoComplete="name"
+        />
+      </div>
+
+      <div className={`w-full min-w-min ${vertical ? "flex-1" : "md:w-1/2"}`}>
+        <Input
           name="email"
           label="Email Address"
           hideLabel
           type="email"
           required
-          placeholder={placeholder ?? "Enter your email"}
+          placeholder="Your email"
           register={register}
           autoComplete="email"
         />
