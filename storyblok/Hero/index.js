@@ -1,9 +1,10 @@
 import { storyblokEditable } from "@storyblok/react";
 import clsx from "clsx";
 import { Button } from "../../components/Button";
+import { RichText } from "../../components/RichText";
 
 const Hero = ({ blok }) => {
-  const { title, description, buttons, alignment } = blok;
+  const { title, description, buttons, alignment, text_size } = blok;
   const editable = storyblokEditable(blok);
   const isCenterAligned = alignment === "center";
 
@@ -23,12 +24,16 @@ const Hero = ({ blok }) => {
             {title}
           </h1>
 
-          <p
+          <RichText
             {...editable}
-            className="text-lg font-light text-gray-700 dark:text-gray-200 md:text-xl lg:text-2xl"
-          >
-            {description}
-          </p>
+            data={description}
+            className={clsx(
+              "prose max-w-full",
+              text_size === "lg" &&
+                "text-lg text-gray-700 dark:text-gray-200 md:text-xl lg:text-2xl",
+              text_size === "md" && "text-lg"
+            )}
+          />
 
           {buttons.length ? (
             <div

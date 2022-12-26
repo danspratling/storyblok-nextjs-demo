@@ -1,4 +1,0 @@
-.cover + footer {
-  /* Reverse the spacing if the footer dicrectly follows the cover */
-  @apply -mt-12 md:-mt-20;
-}

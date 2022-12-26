@@ -4,6 +4,7 @@ export const components = {
   // Sections
   blog_section: dynamic(() => import("./BlogSection")),
   contact_form: dynamic(() => import("./Contact")),
+  content_section: dynamic(() => import("./ContentSection")),
   features: dynamic(() => import("./Features")),
   grid: dynamic(() => import("./Grid")),
   hero: dynamic(() => import("./Hero")),
