@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
-import { RichText } from "../../components/RichText";
+import RichText from "../../components/RichText";
 import { Button } from "../../components/Button";
 
 const Projects = ({ blok }) => {

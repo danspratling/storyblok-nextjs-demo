@@ -1,5 +1,5 @@
 import { storyblokEditable } from "@storyblok/react";
-import { RichText } from "../RichText";
+import RichText from "../RichText";
 import Image from "../Image";
 
 const PeopleHero = ({ blok }) => {

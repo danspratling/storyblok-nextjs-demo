@@ -50,6 +50,9 @@ module.exports = {
       fontFamily: {
         sans: ['"RubikVariable"', ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        "2xl": "1440px",
+      },
       zIndex: {
         "-10": "-10",
       },

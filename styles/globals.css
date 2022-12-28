@@ -19,7 +19,7 @@ html {
   scroll-padding-top: 2em;
 }
 
-[class*="prose"] :not(:is(h1, h2, h3, h4, h5, h6)) {
+[class*="prose"] :not(:is(h1, h2, h3, h4, h5, h6, b)) {
   @apply font-light text-gray-500 dark:text-gray-400;
 }
 
@@ -49,6 +49,14 @@ html {
 
 [class*="prose"] ol {
   @apply list-decimal;
+}
+
+[class*="prose"] li p {
+  @apply my-0;
+}
+
+[class*="prose"] blockquote {
+  @apply text-2xl font-light leading-normal;
 }
 
 /* rubik-latin-variable-wghtOnly-normal */

@@ -1,5 +1,5 @@
 import { storyblokEditable } from "@storyblok/react";
-import { RichText } from "../../components/RichText";
+import RichText from "../../components/RichText";
 import { Button } from "../../components/Button";
 
 const Logos = ({ blok }) => {

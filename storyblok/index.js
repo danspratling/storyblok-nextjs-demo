@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  // Sections
+  // Page Sections
   blog_section: dynamic(() => import("./BlogSection")),
   contact_form: dynamic(() => import("./Contact")),
   content_section: dynamic(() => import("./ContentSection")),

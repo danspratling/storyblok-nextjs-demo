@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { storyblokEditable } from "@storyblok/react";
 import Image from "../../components/Image";
-import { RichText } from "../../components/RichText";
+import RichText from "../../components/RichText";
 
 const imageSizes = {
   lg: 994,
