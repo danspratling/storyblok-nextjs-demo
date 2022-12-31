@@ -3,6 +3,7 @@
 
 @import "tailwindcss/components";
 @import "./button.css";
+@import "./code.css";
 
 @import "tailwindcss/utilities";
 
@@ -19,7 +20,7 @@ html {
   scroll-padding-top: 2em;
 }
 
-[class*="prose"] :not(:is(h1, h2, h3, h4, h5, h6, b)) {
+[class*="prose"] :not(:is(h1, h2, h3, h4, h5, h6, b, code)) {
   @apply font-light text-gray-500 dark:text-gray-400;
 }
 

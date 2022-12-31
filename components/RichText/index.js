@@ -1,15 +1,20 @@
 /* Docs: https://www.npmjs.com/package/storyblok-rich-text-react-renderer */
+import { useEffect } from "react";
 import {
   render,
   MARK_LINK,
   NODE_HEADING,
   NODE_IMAGE,
 } from "storyblok-rich-text-react-renderer";
+import Prism from "prismjs";
 import Link from "next/link";
 import Image from "../Image";
 import { createId } from "../../utils/createId";
 
 export default function RichText({ data, generateIds, ...props }) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <div {...props}>
       {render(data, {

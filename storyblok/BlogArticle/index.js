@@ -9,8 +9,6 @@ export const BlogArticle = ({ blok }) => {
 
   const currentSection = useTableOfContents(blok);
 
-  console.log({ currentSection });
-
   return (
     <div className="container relative flex justify-center">
       <aside className="hidden lg:relative lg:block lg:flex-none">

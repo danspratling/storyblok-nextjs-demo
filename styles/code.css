@@ -1,0 +1,98 @@
+code:not([class*="language-"]) {
+  @apply bg-gray-100 px-2 py-1 text-sm text-gray-600;
+}
+
+code[class*="language-"],
+pre[class*="language"] {
+  @apply text-gray-600;
+}
+
+pre[class*="language"],
+:not(pre) > code[class*="language-"] {
+  @apply bg-gray-100;
+  max-width: calc(100vw - 2rem);
+}
+
+/* Code blocks */
+pre[class*="language"] {
+  @apply overflow-auto rounded-sm py-4 px-6 text-sm;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  @apply whitespace-normal rounded-sm px-2 py-1;
+}
+
+/* Hide the built in language display, as we have our own */
+pre[class*="language"] + .toolbar {
+  @apply hidden;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply whitespace-pre-wrap text-gray-500;
+}
+
+.token.function-variable,
+.token.function {
+  @apply text-fuchsia-700;
+}
+
+.token.parameter {
+  @apply text-red-600;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  @apply text-fuchsia-700;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-gray-500;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  @apply text-gray-500;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-blue-500;
+}
+
+.token.regex,
+.token.important {
+  @apply text-blue-500;
+}
+
+.token.important,
+.token.bold {
+  @apply font-semibold;
+}
+.token.italic {
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.deleted {
+  @apply text-red-800;
+}

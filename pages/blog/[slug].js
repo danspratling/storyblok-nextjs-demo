@@ -1,17 +1,14 @@
 import { Layout } from "../../components/Layout";
+import { BlogHero } from "../../storyblok/BlogHero";
 import { BlogArticle } from "../../storyblok/BlogArticle";
-// import PeopleHero from "../../components/PeopleHero";
 
-import {
-  useStoryblokState,
-  getStoryblokApi,
-  StoryblokComponent,
-} from "@storyblok/react";
+import { useStoryblokState, getStoryblokApi } from "@storyblok/react";
 
 const resolve_relations = [
   "project_section.projects",
   "testimonial_section.testimonial",
   "testimonial.project",
+  "blog_post.team_member",
 ];
 
 export default function BlogPost({ story, config }) {
@@ -22,8 +19,11 @@ export default function BlogPost({ story, config }) {
 
   return (
     <Layout blok={config.content}>
-      {/* <BlogHero {...heroData} /> */}
-
+      <BlogHero
+        blok={story.content}
+        publishDate={story.first_published_at}
+        updatedDate={story.published_at}
+      />
       <BlogArticle blok={story.content} />
     </Layout>
   );
