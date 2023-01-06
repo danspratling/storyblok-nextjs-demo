@@ -6,6 +6,7 @@ const TeamMember = ({ blok }) => {
     <main>
       <PeopleHero blok={blok} />
 
+      {/* This blog list should only show posts from the current author */}
       <BlogList />
 
       {/* {blok.body.map((nestedBlok) => (
