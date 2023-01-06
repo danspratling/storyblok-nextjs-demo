@@ -2,23 +2,25 @@ import dynamic from "next/dynamic";
 
 export const components = {
   // Page Sections
-  blog_section: dynamic(() => import("./BlogSection")),
-  contact_form: dynamic(() => import("./Contact")),
-  content_section: dynamic(() => import("./ContentSection")),
-  features: dynamic(() => import("./Features")),
-  grid: dynamic(() => import("./Grid")),
-  hero: dynamic(() => import("./Hero")),
-  image_section: dynamic(() => import("./ImageSection")),
-  logos: dynamic(() => import("./Logos")),
-  newsletter_section: dynamic(() => import("./Newsletter")),
-  project_section: dynamic(() => import("./ProjectSection")),
-  team: dynamic(() => import("./Team")),
-  // testimonial_section: dynamic(() => import("./Testimonial")),
-  text_section: dynamic(() => import("./TextSection")),
+  blog_section: dynamic(() => import("./sections/BlogSection")),
+  contact_form: dynamic(() => import("./sections/Contact")),
+  content_section: dynamic(() => import("./sections/ContentSection")),
+  features: dynamic(() => import("./sections/Features")),
+  grid: dynamic(() => import("./sections/Grid")),
+  hero: dynamic(() => import("./sections/Hero")),
+  image_section: dynamic(() => import("./sections/ImageSection")),
+  logos: dynamic(() => import("./sections/Logos")),
+  newsletter_section: dynamic(() => import("./sections/Newsletter")),
+  project_section: dynamic(() => import("./sections/ProjectSection")),
+  team: dynamic(() => import("./sections/Team")),
+  testimonial_section: null,
+  // testimonial_section: dynamic(() => import("./sections/Testimonial")),
+  text_section: dynamic(() => import("./sections/TextSection")),
 
   // Templates
-  blog_root: dynamic(() => import("./BlogRoot")),
-  page: dynamic(() => import("./Page")),
-  project: dynamic(() => import("./Project")),
-  team_member: null, // We have a team_member template but the page is handled directly so no component needed
+  blog_post: dynamic(() => import("./templates/BlogPost")),
+  blog_root: dynamic(() => import("./templates/BlogRoot")),
+  page: dynamic(() => import("./templates/Page")),
+  project: dynamic(() => import("./templates/Project")),
+  team_member: dynamic(() => import("./templates/TeamMember")),
 };

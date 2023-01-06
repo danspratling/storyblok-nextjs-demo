@@ -6,15 +6,12 @@ import Image from "../Image";
 
 const BlogCard = ({ post, vertical = false }) => {
   const { content, first_published_at, full_slug } = post;
-  const {
-    title,
-    description,
-    featured_image,
-    // author,
-  } = content;
+  const { title, description, featured_image } = content;
 
-  const { blogCategories } = useContext(GlobalContext);
+  const { blogCategories, teamMembers } = useContext(GlobalContext);
   const category = blogCategories.find((c) => c.value === content.category);
+
+  const authors = teamMembers.filter((t) => content.authors.includes(t.uuid));
 
   return (
     <div
@@ -42,26 +39,27 @@ const BlogCard = ({ post, vertical = false }) => {
           </p>
         </Link>
 
-        {/* <Link href={author} className="flex items-center gap-3">
+        <div className="flex items-center gap-3">
           <Image
-            {...author.data.avatar}
+            src={authors[0].content.avatar.filename}
+            alt={authors[0].content.avatar.alt}
             width={48}
             height={48}
             className="rounded-full"
           />
           <div>
-            <RichText field={author.data.name} plainText as="p" /> */}
+            {authors[0].content.name}
 
-        {first_published_at && (
-          <p className="text-gray-600 dark:text-gray-400">
-            {format(
-              new Date(first_published_at), // ?? first_publication_date,
-              "d MMMM, yyyy"
+            {first_published_at && (
+              <p className="text-gray-600 dark:text-gray-400">
+                {format(
+                  new Date(first_published_at), // ?? first_publication_date,
+                  "d MMMM, yyyy"
+                )}
+              </p>
             )}
-          </p>
-        )}
-        {/* </div>
-        </Link> */}
+          </div>
+        </div>
       </div>
     </div>
   );

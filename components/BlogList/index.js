@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import { GlobalContext } from "../../context/GlobalContext";
+
 import BlogCard from "../../components/BlogCard";
 import BlogCategories from "./BlogCategories";
 

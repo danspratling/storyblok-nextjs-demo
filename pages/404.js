@@ -25,10 +25,10 @@ export async function getStaticProps() {
   const storyblokApi = getStoryblokApi();
 
   const [page, config] = await Promise.all([
-    storyblokApi.get(`cdn/stories/${slug}`, {
+    storyblokApi.get(`cdn/stories/home`, {
       version: "draft", // or 'published'
     }),
-    storyblokApi.get("cdn/stories/site-config", {
+    storyblokApi.get("cdn/stories/globals/site-config", {
       version: "draft",
       // resolve_links: 'url',
     }),

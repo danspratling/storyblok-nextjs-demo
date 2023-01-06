@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   FacebookShareButton,
   FacebookMessengerShareButton,
@@ -6,8 +6,6 @@ import {
   RedditShareButton,
   TwitterShareButton,
 } from "react-share";
-import Image from "../../components/Image";
-import { calculateStoryblokReadTime } from "../../utils/calculateReadTime";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
@@ -17,29 +15,51 @@ import {
   faReddit,
 } from "@fortawesome/free-brands-svg-icons";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import { format } from "date-fns";
+import { GlobalContext } from "../context/GlobalContext";
+import { calculateStoryblokReadTime } from "../utils/calculateReadTime";
+import Image from "../components/Image";
+import { storyblokEditable } from "@storyblok/react";
 
 export const BlogHero = ({ blok, publishDate, updatedDate }) => {
-  const { title, description, featured_image, authors, category, content } =
-    blok;
+  const editable = storyblokEditable(blok);
+  const { title, description, featured_image, content } = blok;
+  const { blogCategories, teamMembers } = useContext(GlobalContext);
   const readTime = calculateStoryblokReadTime(content);
+  const publishedOn = new Date(publishDate).setHours(0, 0, 0, 0);
+  const updatedOn = new Date(updatedDate).setHours(0, 0, 0, 0);
+
+  const category = blogCategories.find((c) => c.value === blok.category);
+  const authors = teamMembers.filter((author) =>
+    blok.authors.includes(author.uuid)
+  );
 
   return (
-    <section className="py-12 md:py-20">
+    <section {...editable} className="py-12 md:py-20">
       <div className="container">
         <div className="max-w-5xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gray-100 p-[0.4rem] dark:bg-gray-800">
-            <h1 className="rounded-full bg-gray-800 px-[0.65rem] py-[0.15rem] text-white dark:bg-gray-50 dark:text-gray-900">
-              {category}
-            </h1>
+            <p
+              {...editable}
+              className="rounded-full bg-gray-800 px-[0.65rem] py-[0.15rem] text-white dark:bg-gray-50 dark:text-gray-900"
+            >
+              {category.name}
+            </p>
             <p className="pr-2">{readTime} min read</p>
           </div>
 
-          <h1 className="mb-8 text-4xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-5xl lg:text-7xl">
+          <h1
+            {...editable}
+            className="mb-8 text-4xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-5xl lg:text-7xl"
+          >
             {title}
           </h1>
 
           {description && (
-            <p className="mb-12 text-lg font-light text-gray-700 dark:text-gray-200 md:text-xl lg:text-2xl">
+            <p
+              {...editable}
+              className="mb-12 text-lg font-light text-gray-700 dark:text-gray-200 md:text-xl lg:text-2xl"
+            >
               {description}
             </p>
           )}
@@ -58,37 +78,32 @@ export const BlogHero = ({ blok, publishDate, updatedDate }) => {
         {/* Author, Dates & Social Sharing */}
         <div className="flex flex-wrap justify-between">
           <div className="mb-6 flex flex-wrap gap-4 md:mb-0 md:gap-6 lg:gap-12">
-            <InfoCard title="Written by">
-              {/* <Image
-                src={author.data.avatar.filename}
-                alt={author.}
+            <InfoCard {...editable} title="Written by">
+              <Image
+                src={authors[0].content.avatar.filename}
+                alt={authors[0].content.avatar.alt}
                 width={28}
                 height={28}
                 className="rounded-full"
               />
-              <RichText
-                field={author.name}
-                plainText
-                as="p"
-                className="md:text-lg"
-              /> */}
+              <p className="md:text-lg">{authors[0].name}</p>
             </InfoCard>
 
             <InfoCard title="Published on">
               <p className="md:text-lg">
-                {/* {publishDate
-                  ? format(asDate(publishDate), "d MMMM, yyyy")
-                  : "Draft post"} */}
+                {publishedOn
+                  ? format(publishedOn, "d MMMM, yyyy")
+                  : "Draft post"}
               </p>
             </InfoCard>
 
-            {updatedDate && (
+            {updatedOn && updatedOn > publishedOn ? (
               <InfoCard title="Updated on">
                 <p className="md:text-lg">
-                  {/* {format(asDate(updatedDate), "d MMMM, yyyy")} */}
+                  {format(updatedOn, "d MMMM, yyyy")}
                 </p>
               </InfoCard>
-            )}
+            ) : null}
           </div>
 
           <div className="flex flex-wrap items-start gap-4">

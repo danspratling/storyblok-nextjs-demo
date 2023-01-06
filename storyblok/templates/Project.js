@@ -1,6 +1,6 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 
-const Page = ({ blok }) => {
+const Project = ({ blok }) => {
   if (!blok?.body?.length) return null;
 
   return (
@@ -12,4 +12,4 @@ const Page = ({ blok }) => {
   );
 };
 
-export default Page;
+export default Project;

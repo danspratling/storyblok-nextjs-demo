@@ -1,9 +1,9 @@
-import RichText from "../../components/RichText";
-import { PageContents, SeriesContents } from "../../components/Contents";
+import RichText from "../components/RichText";
+import { PageContents, SeriesContents } from "../components/Contents";
 import { storyblokEditable } from "@storyblok/react";
-import { useTableOfContents } from "../../hooks/useTableOfContents";
+import { useTableOfContents } from "../hooks/useTableOfContents";
 
-export const BlogArticle = ({ blok }) => {
+const BlogArticle = ({ blok }) => {
   const editable = storyblokEditable(blok);
   const { content } = blok;
 
@@ -12,7 +12,7 @@ export const BlogArticle = ({ blok }) => {
   return (
     <div className="container relative flex justify-center">
       <aside className="hidden lg:relative lg:block lg:flex-none">
-        <div className="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto overflow-x-hidden py-16 pl-0.5">
+        <div className="sticky top-0 -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto overflow-x-hidden py-16 pl-0.5">
           <div className="w-64 pr-8 text-base lg:text-sm xl:w-72 xl:pr-16">
             {/* <SeriesContents /> */}
           </div>
@@ -24,9 +24,11 @@ export const BlogArticle = ({ blok }) => {
       >
         <RichText className="prose-lg" data={content} />
       </article>
-      <aside className="hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
+      <aside className="hidden xl:sticky xl:top-0 xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6">
         <PageContents content={content} currentSection={currentSection} />
       </aside>
     </div>
   );
 };
+
+export default BlogArticle;
