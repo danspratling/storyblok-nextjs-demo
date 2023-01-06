@@ -23,8 +23,6 @@ export const BlogHero = ({ blok, publishDate, updatedDate }) => {
     blok;
   const readTime = calculateStoryblokReadTime(content);
 
-  console.log(blok);
-
   return (
     <section className="py-12 md:py-20">
       <div className="container">

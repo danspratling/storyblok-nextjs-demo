@@ -17,6 +17,7 @@ export const components = {
   text_section: dynamic(() => import("./TextSection")),
 
   // Templates
+  blog_root: dynamic(() => import("./BlogRoot")),
   page: dynamic(() => import("./Page")),
   project: dynamic(() => import("./Project")),
   team_member: null, // We have a team_member template but the page is handled directly so no component needed

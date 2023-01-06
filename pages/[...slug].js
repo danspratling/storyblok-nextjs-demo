@@ -29,7 +29,7 @@ export async function getStaticProps({ params }) {
   const storyblokApi = getStoryblokApi();
   const slug = params.slug?.join("/");
 
-  const [page, config, team] = await Promise.all([
+  const [page, config, team, blogPosts, blogCategories] = await Promise.all([
     storyblokApi.get(`cdn/stories/${slug}`, {
       version: "draft", // or 'published'
       resolve_relations,
@@ -44,6 +44,15 @@ export async function getStaticProps({ params }) {
       content_type: "team_member",
       sort_by: "content.start_date:asc",
     }),
+    storyblokApi.get("cdn/stories", {
+      version: "draft",
+      content_type: "blog_post",
+      sort_by: "content.start_date:asc",
+    }),
+    storyblokApi.get("cdn/datasource_entries", {
+      version: "draft",
+      datasource: "blog-categories",
+    }),
   ]);
 
   return {
@@ -53,6 +62,10 @@ export async function getStaticProps({ params }) {
       config: config ? config.data.story : false,
       provider: {
         teamMembers: team ? team.data.stories : [],
+        blogPosts: blogPosts ? blogPosts.data.stories : [],
+        blogCategories: blogCategories
+          ? blogCategories.data.datasource_entries
+          : [],
       },
     },
     revalidate: 3600, // revalidate every hour
