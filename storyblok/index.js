@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 export const components = {
   // Page Sections
   blog_section: dynamic(() => import("./sections/BlogSection")),
+  call_to_action: dynamic(() => import("./sections/CallToAction")),
   contact_form: dynamic(() => import("./sections/Contact")),
   content_section: dynamic(() => import("./sections/ContentSection")),
   features: dynamic(() => import("./sections/Features")),
@@ -13,7 +14,7 @@ export const components = {
   newsletter_section: dynamic(() => import("./sections/Newsletter")),
   project_section: dynamic(() => import("./sections/ProjectSection")),
   team: dynamic(() => import("./sections/Team")),
-  testimonial_section: null,
+  testimonial_section: () => null,
   // testimonial_section: dynamic(() => import("./sections/Testimonial")),
   text_section: dynamic(() => import("./sections/TextSection")),
 

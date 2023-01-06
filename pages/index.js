@@ -12,14 +12,18 @@ const resolve_relations = [
   "testimonial.project",
 ];
 
-export default function Home({ story, config }) {
+export default function Home({ story, config, footerCta, provider }) {
   story = useStoryblokState(story, {
     resolve_relations,
   });
   config = useStoryblokState(config);
 
   return (
-    <Layout blok={config.content}>
+    <Layout
+      blok={config.content}
+      footerCta={footerCta.content}
+      provider={provider}
+    >
       <StoryblokComponent blok={story.content} />
     </Layout>
   );
@@ -30,7 +34,7 @@ export async function getStaticProps() {
 
   const [page, config, footerCta, team, blogPosts, blogCategories] =
     await Promise.all([
-      storyblokApi.get(`cdn/stories/${slug}`, {
+      storyblokApi.get(`cdn/stories/home`, {
         version: "draft", // or 'published'
         resolve_relations,
         resolve_links: "url",

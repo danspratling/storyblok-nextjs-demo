@@ -34,7 +34,7 @@ export const Layout = ({ blok, footerCta, provider, children }) => {
         {/* {renderThemechanger()} */}
         {children}
 
-        <CallToAction blok={footerCta} />
+        {footerCta ? <CallToAction blok={footerCta} /> : null}
 
         {/* <Footer {...footer.data} /> */}
         {/* {isPreview ? (
