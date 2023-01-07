@@ -19,6 +19,7 @@ export const useTableOfContents = ({ content }) => {
   useEffect(() => {
     if (tableOfContents.length === 0) return;
     const headings = getHeadings(tableOfContents);
+
     function onScroll() {
       let top = window.scrollY;
       let current = headings[0].id;

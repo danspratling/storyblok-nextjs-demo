@@ -4,12 +4,12 @@ import { GlobalContext } from "../../context/GlobalContext";
 import BlogCard from "../../components/BlogCard";
 import BlogCategories from "./BlogCategories";
 
-const BlogList = () => {
+const BlogList = ({ posts }) => {
   const router = useRouter();
-  const { blogPosts, blogCategories } = useContext(GlobalContext);
+  const { blogCategories } = useContext(GlobalContext);
 
   const [currentCategory, setCurrentCategory] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+  const [filteredPosts, setFilteredPosts] = useState(posts);
 
   // We probably want to switch to server side rendering here to avoid the flash of unfiltered content
   useEffect(() => {
@@ -26,9 +26,7 @@ const BlogList = () => {
 
     if (currentCategory !== "") {
       setFilteredPosts(
-        blogPosts.filter(
-          (post) => post.content.category === currentCategory.value
-        )
+        posts.filter((post) => post.content.category === currentCategory.value)
       );
 
       // Wrapping if required for testing
@@ -45,7 +43,7 @@ const BlogList = () => {
         );
       }
     } else {
-      setFilteredPosts(blogPosts);
+      setFilteredPosts(posts);
 
       // Wrapping if required for testing
       if (router) {
@@ -59,7 +57,7 @@ const BlogList = () => {
       <div className="container">
         <BlogCategories
           categories={blogCategories}
-          posts={blogPosts}
+          posts={posts}
           currentCategory={currentCategory}
           setCurrentCategory={setCurrentCategory}
         />

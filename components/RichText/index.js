@@ -12,6 +12,8 @@ import Image from "../Image";
 import { createId } from "../../utils/createId";
 
 export default function RichText({ data, generateIds, ...props }) {
+  if (!data.content.length) return null;
+
   useEffect(() => {
     Prism.highlightAll();
   }, []);

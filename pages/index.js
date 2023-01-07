@@ -24,7 +24,7 @@ export default function Home({ story, config, footerCta, provider }) {
       footerCta={footerCta.content}
       provider={provider}
     >
-      <StoryblokComponent blok={story.content} />
+      <StoryblokComponent blok={story.content} {...story} />
     </Layout>
   );
 }
