@@ -14,11 +14,11 @@ const BlogCategories = ({
   // Only show categories which have active posts
   const filteredCategories = categories
     .filter((category) =>
-      posts.some((post) => post.content.category === category.value)
+      posts.some((post) => post.content.category === category)
     )
     .sort((a, b) => {
-      if (a.value < b.value) return -1;
-      if (a.value > b.value) return 1;
+      if (a < b) return -1;
+      if (a > b) return 1;
       return 0;
     });
 
@@ -34,15 +34,15 @@ const BlogCategories = ({
         </CategoryButton>
       </li>
       {filteredCategories.map((category) => (
-        <li key={category.value}>
+        <li key={category}>
           <CategoryButton
             active={currentCategory === category}
             onClick={() => setCurrentCategory(category)}
           >
-            {category.name}
+            {category}
             <span className="text-gray-500">
               {
-                posts.filter((post) => post.content.category === category.value)
+                posts.filter((post) => post.content.category === category)
                   .length
               }
             </span>

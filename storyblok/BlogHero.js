@@ -24,12 +24,11 @@ import { storyblokEditable } from "@storyblok/react";
 export const BlogHero = ({ blok, publishDate, updatedDate }) => {
   const editable = storyblokEditable(blok);
   const { title, description, featured_image, content } = blok;
-  const { blogCategories, teamMembers } = useContext(GlobalContext);
+  const { teamMembers } = useContext(GlobalContext);
   const readTime = calculateStoryblokReadTime(content);
   const publishedOn = new Date(publishDate).setHours(0, 0, 0, 0);
   const updatedOn = new Date(updatedDate).setHours(0, 0, 0, 0);
 
-  const category = blogCategories.find((c) => c.value === blok.category);
   const authors = teamMembers.filter((author) =>
     blok.authors.includes(author.uuid)
   );
@@ -39,12 +38,12 @@ export const BlogHero = ({ blok, publishDate, updatedDate }) => {
       <div className="container">
         <div className="max-w-5xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gray-100 p-[0.4rem] dark:bg-gray-800">
-            {category && (
+            {blok.category && (
               <p
                 {...editable}
                 className="rounded-full bg-gray-800 px-[0.65rem] py-[0.15rem] text-white dark:bg-gray-50 dark:text-gray-900"
               >
-                {category.name}
+                {blok.category}
               </p>
             )}
             <p className="pr-2">{readTime} min read</p>

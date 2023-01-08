@@ -1,36 +1,56 @@
+import { useStoryblokState, getStoryblokApi } from "@storyblok/react";
 import { Layout } from "../components/Layout";
+import StoryblokComponent from "../storyblok";
 
-import {
-  useStoryblokState,
-  getStoryblokApi,
-  StoryblokComponent,
-} from "@storyblok/react";
+const resolve_relations = [
+  "project_section.projects",
+  "testimonial_section.testimonial",
+  "testimonial.project",
+];
 
-export default function Home({ story, config }) {
-  story = useStoryblokState(story);
+export default function Home({ story, config, footerCta, provider }) {
+  story = useStoryblokState(story, {
+    resolve_relations,
+  });
   config = useStoryblokState(config);
 
   return (
-    <Layout blok={config.content}>
-      <h1>404 Page not found</h1>
-      {/* <StoryblokComponent blok={story.content} /> */}
+    <Layout
+      blok={config.content}
+      footerCta={footerCta.content}
+      provider={provider}
+    >
+      <StoryblokComponent blok={story.content} {...story} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  // home is the default slug for the homepage in Storyblok
-  let slug = "home";
-
   const storyblokApi = getStoryblokApi();
 
-  const [page, config] = await Promise.all([
-    storyblokApi.get(`cdn/stories/home`, {
+  const [page, config, footerCta, team, blogPosts] = await Promise.all([
+    storyblokApi.get(`cdn/stories/error-pages/404`, {
       version: "draft", // or 'published'
+      resolve_relations,
+      resolve_links: "url",
     }),
     storyblokApi.get("cdn/stories/globals/site-config", {
       version: "draft",
-      // resolve_links: 'url',
+      resolve_links: "url",
+    }),
+    storyblokApi.get("cdn/stories/globals/footer-cta", {
+      version: "draft",
+      resolve_links: "url",
+    }),
+    storyblokApi.get("cdn/stories", {
+      version: "draft",
+      content_type: "team_member",
+      sort_by: "content.start_date:asc",
+    }),
+    storyblokApi.get("cdn/stories", {
+      version: "draft",
+      content_type: "blog_post",
+      sort_by: "content.start_date:desc",
     }),
   ]);
 
@@ -39,6 +59,11 @@ export async function getStaticProps() {
       key: page ? page.data.story.id : false,
       story: page ? page.data.story : false,
       config: config ? config.data.story : false,
+      footerCta: footerCta ? footerCta.data.story : false,
+      provider: {
+        teamMembers: team ? team.data.stories : [],
+        blogPosts: blogPosts ? blogPosts.data.stories : [],
+      },
     },
     revalidate: 3600, // revalidate every hour
   };

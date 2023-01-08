@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import { storyblokEditable } from "@storyblok/react";
 import { GlobalContext } from "../../context/GlobalContext";
+import StoryblokComponent from "..";
 import BlogList from "../../components/BlogList";
 
 const BlogRoot = ({ blok }) => {

@@ -6,11 +6,8 @@ import Image from "../Image";
 
 const BlogCard = ({ post, vertical = false }) => {
   const { content, first_published_at, full_slug } = post;
-  const { title, description, featured_image } = content;
-
-  const { blogCategories, teamMembers } = useContext(GlobalContext);
-  const category = blogCategories.find((c) => c.value === content.category);
-
+  const { title, description, featured_image, category } = content;
+  const { teamMembers } = useContext(GlobalContext);
   const authors = teamMembers.filter((t) => content.authors.includes(t.uuid));
 
   return (
@@ -30,7 +27,7 @@ const BlogCard = ({ post, vertical = false }) => {
       <div className="py-4">
         <Link href={full_slug}>
           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-            {category.name}
+            {category}
           </p>
 
           <h2 className="mb-3 text-2xl">{title}</h2>

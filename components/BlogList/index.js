@@ -1,12 +1,13 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { GlobalContext } from "../../context/GlobalContext";
 import BlogCard from "../../components/BlogCard";
 import BlogCategories from "./BlogCategories";
 
 const BlogList = ({ posts }) => {
   const router = useRouter();
-  const { blogCategories } = useContext(GlobalContext);
+  const blogCategories = [
+    ...new Set(posts.map((post) => post.content.category)),
+  ];
 
   const [currentCategory, setCurrentCategory] = useState("");
   const [filteredPosts, setFilteredPosts] = useState(posts);
@@ -16,7 +17,7 @@ const BlogList = ({ posts }) => {
     const { search } = window.location;
     const params = new URLSearchParams(search);
     setCurrentCategory(
-      blogCategories.find((c) => c.value === params.get("category")) || ""
+      blogCategories.find((c) => c === params.get("category")) || ""
     );
   }, []);
 
@@ -26,7 +27,7 @@ const BlogList = ({ posts }) => {
 
     if (currentCategory !== "") {
       setFilteredPosts(
-        posts.filter((post) => post.content.category === currentCategory.value)
+        posts.filter((post) => post.content.category === currentCategory)
       );
 
       // Wrapping if required for testing
@@ -34,7 +35,7 @@ const BlogList = ({ posts }) => {
         router.push(
           {
             pathname,
-            query: { category: currentCategory.value },
+            query: { category: currentCategory },
           },
           undefined,
           {

@@ -7,12 +7,12 @@ import { storyblokInit, apiPlugin } from "@storyblok/react";
 // import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import PlausibleProvider from "next-plausible";
-import { components } from "../storyblok";
+// import { components } from "../storyblok";
 
 storyblokInit({
   accessToken: process.env.storyblokApiToken,
   use: [apiPlugin],
-  components,
+  // components,
 });
 
 function MyApp({ Component, pageProps }) {
