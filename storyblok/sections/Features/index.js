@@ -1,16 +1,12 @@
 import dynamic from "next/dynamic";
 
-import FeaturesVertical from "./FeaturesVertical";
-import FeaturesHorizontal from "./FeaturesHorizontal";
-
 const componentMap = {
-  vertical: FeaturesVertical,
-  horizontal: FeaturesHorizontal,
+  vertical: dynamic(() => import("./FeaturesVertical")),
+  horizontal: dynamic(() => import("./FeaturesHorizontal")),
 };
 
 const Features = ({ blok }) => {
-  const { layout } = blok;
-  const VariableComponent = componentMap[layout];
+  const VariableComponent = componentMap[blok.layout];
   return <VariableComponent blok={blok} />;
 };
 

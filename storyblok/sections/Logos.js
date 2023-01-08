@@ -1,4 +1,5 @@
 import { storyblokEditable } from "@storyblok/react";
+import Image from "../../components/Image";
 import RichText from "../../components/RichText";
 import { Button } from "../../components/Button";
 
@@ -9,7 +10,7 @@ const Logos = ({ blok }) => {
   return (
     <section {...editable} className="py-12 md:py-20">
       <div className="container">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="mb-8 text-3xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl">
             {title}
           </h2>
@@ -30,13 +31,13 @@ const Logos = ({ blok }) => {
           )}
         </div>
 
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-20 gap-y-4">
+        <div className="flex flex-wrap items-center justify-center max-w-5xl mx-auto gap-x-20 gap-y-4">
           {logos.map((logo, index) => (
-            <img
+            <Image
               key={index}
               src={logo.filename}
               alt={logo.alt}
-              className="max-h-24 w-auto py-6"
+              className="w-auto py-6 max-h-24"
             />
           ))}
         </div>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 
 const Select = ({
   name,
@@ -14,7 +13,7 @@ const Select = ({
   const [currentValue, setCurrentValue] = useState("");
 
   return (
-    <div className="mb-4 flex flex-col gap-1 text-left">
+    <div className="flex flex-col mb-4 text-left gap-1">
       <label htmlFor={name} className={hideLabel ? "sr-only" : ""}>
         {label}
       </label>
@@ -22,7 +21,7 @@ const Select = ({
         name={name}
         id={name}
         {...register(name, { required })}
-        className="shadow-xs mb-2 w-full rounded-lg border border-gray-200 bg-white px-3 py-4 outline-none focus:ring-1 focus:ring-gray-700 dark:text-black"
+        className="w-full px-3 py-4 mb-2 bg-white border border-gray-200 rounded-lg outline-none shadow-xs focus:ring-1 focus:ring-gray-700 dark:text-black"
         autoComplete={autoComplete}
         defaultValue=""
         onChange={(e) => setCurrentValue(e.target.value)}
@@ -48,7 +47,7 @@ const Select = ({
           {...register(`${name}-other`, { required })}
           type="text"
           placeholder="Please specify"
-          className="shadow-xs w-full rounded-lg border border-gray-200 bg-white px-3 py-4 outline-none focus:ring-1 focus:ring-gray-700 dark:text-black"
+          className="w-full px-3 py-4 bg-white border border-gray-200 rounded-lg outline-none shadow-xs focus:ring-1 focus:ring-gray-700 dark:text-black"
         />
       )}
     </div>

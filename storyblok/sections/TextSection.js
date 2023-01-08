@@ -1,5 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import clsx from "clsx";
+import Image from "../../components/Image";
 import RichText from "../../components/RichText";
 
 const TextSection = ({ blok }) => {
@@ -23,11 +24,11 @@ const TextSection = ({ blok }) => {
         >
           <RichText
             data={text}
-            className="prose-lg text-gray-700 dark:text-gray-200"
+            className="text-gray-700 prose-lg dark:text-gray-200"
           />
 
           {image && (
-            <img
+            <Image
               src={image.filename}
               alt={image.alt}
               className="lg:col-span-2"

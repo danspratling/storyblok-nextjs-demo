@@ -11,12 +11,13 @@ import Link from "next/link";
 import Image from "../Image";
 import { createId } from "../../utils/createId";
 
-export default function RichText({ data, generateIds, ...props }) {
-  if (!data.content.length) return null;
-
+export default function RichText({ data, ...props }) {
   useEffect(() => {
     Prism.highlightAll();
   }, []);
+
+  if (!data.content.length) return null;
+
   return (
     <div {...props}>
       {render(data, {
@@ -58,5 +59,7 @@ const nodeResolvers = {
     const Heading = `h${level}`;
     return <Heading id={createId(children)}>{children}</Heading>;
   },
-  [NODE_IMAGE]: (_, props) => <Image {...props} />,
+  [NODE_IMAGE]: (_, props) => (
+    <Image src={props.src} alt={props.alt} {...props} />
+  ),
 };

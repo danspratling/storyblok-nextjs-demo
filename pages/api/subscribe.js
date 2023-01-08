@@ -1,6 +1,6 @@
 //This function was built following this guide: https://ihatetomatoes-nextjs-101.vercel.app/post/react-query-mutation
 
-export default async (req, res) => {
+const subscribe = async (req, res) => {
   const { first_name, email, tags } = req.query;
 
   if (!email) {
@@ -34,3 +34,5 @@ export default async (req, res) => {
     return res.status(500).json({ error: error.message || error.toString() });
   }
 };
+
+export default subscribe;

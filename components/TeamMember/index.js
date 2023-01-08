@@ -6,7 +6,7 @@ const TeamMember = ({ full_slug, content }) => {
   const { name, role, profile_picture } = content;
 
   return (
-    <Link href={full_slug} className="group mb-4">
+    <Link href={full_slug} className="mb-4 group">
       <Image
         src={profile_picture.filename}
         alt={profile_picture.alt}
@@ -19,7 +19,7 @@ const TeamMember = ({ full_slug, content }) => {
           <p className="text-lg md:text-xl">{name}</p>
           <p className="font-light text-gray-500 dark:text-gray-400">{role}</p>
         </div>
-        <ArrowRightIcon className="ml-2 w-6 text-gray-400 opacity-0 transition duration-200 group-hover:opacity-100" />
+        <ArrowRightIcon className="w-6 ml-2 text-gray-400 opacity-0 transition duration-200 group-hover:opacity-100" />
       </div>
     </Link>
   );

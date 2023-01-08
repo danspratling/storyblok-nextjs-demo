@@ -7,7 +7,7 @@ import { TrackGoal } from "../../utils/trackGoal";
 // Add additional functionality using the convertkit API: https://developers.convertkit.com/
 export const NewsletterForm = ({
   className,
-  placeholder,
+  // placeholder,
   submitLabel,
   vertical,
 }) => {

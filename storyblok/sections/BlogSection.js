@@ -11,7 +11,7 @@ const BlogSection = ({ blok }) => {
   return (
     <section {...editable} className="py-12 md:py-20">
       <div className="container">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2
             {...editable}
             className="mb-8 text-2xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl"

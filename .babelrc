@@ -1,0 +1,13 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "prismjs",
+      {
+        "languages": ["javascript", "typescript", "css", "html", "jsx", "bash"],
+        "plugins": ["line-numbers", "show-language"],
+        "css": true
+      }
+    ]
+  ]
+}

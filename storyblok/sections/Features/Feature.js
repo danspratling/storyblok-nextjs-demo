@@ -5,7 +5,7 @@ const FeaturedContent = ({ blok }) => {
   const { title, description } = blok;
 
   return (
-    <div className="flex max-w-sm flex-col">
+    <div className="flex flex-col max-w-sm">
       <div>
         <h3 {...editable} className="mb-2 text-xl">
           {title}

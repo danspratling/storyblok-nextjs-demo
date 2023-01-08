@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import BlogCard from "../../components/BlogCard";
 import BlogCategories from "./BlogCategories";
 
 const BlogList = ({ posts }) => {
   const router = useRouter();
-  const blogCategories = [
-    ...new Set(posts.map((post) => post.content.category)),
-  ];
+  const blogCategories = useMemo(
+    () => [...new Set(posts.map((post) => post.content.category))],
+    [posts]
+  );
 
   const [currentCategory, setCurrentCategory] = useState("");
   const [filteredPosts, setFilteredPosts] = useState(posts);
@@ -19,7 +20,7 @@ const BlogList = ({ posts }) => {
     setCurrentCategory(
       blogCategories.find((c) => c === params.get("category")) || ""
     );
-  }, []);
+  }, [blogCategories]);
 
   // When the category changes, update the posts & the URL
   useEffect(() => {
@@ -51,7 +52,7 @@ const BlogList = ({ posts }) => {
         router.push(pathname, undefined, { shallow: true });
       }
     }
-  }, [currentCategory]);
+  }, [posts, currentCategory, router]);
 
   return (
     <section className="py-12 md:py-20">

@@ -34,7 +34,7 @@ export async function getStaticProps() {
   const storyblokApi = getStoryblokApi();
 
   const [page, config, footerCta, team, blogPosts] = await Promise.all([
-    storyblokApi.get(`cdn/stories/error-pages/404`, {
+    storyblokApi.get(`cdn/stories/home`, {
       version: "draft", // or 'published'
       resolve_relations,
       resolve_links: "url",

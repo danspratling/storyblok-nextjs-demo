@@ -13,9 +13,7 @@ const TeamMember = ({ blok, uuid }) => {
   return (
     <main>
       <PeopleHero blok={blok} />
-
       {postsByAuthor ? <BlogList posts={postsByAuthor} /> : null}
-
       {/* {blok.body.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))} */}

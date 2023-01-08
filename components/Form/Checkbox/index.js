@@ -1,5 +1,5 @@
 const Checkbox = ({ name, label, required, register }) => (
-  <div className="mb-4 flex gap-3 text-left">
+  <div className="flex mb-4 text-left gap-3">
     <input
       name={name}
       id={name}

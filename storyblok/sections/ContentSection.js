@@ -35,7 +35,7 @@ const ContentSection = ({ blok }) => {
             <RichText
               {...editable}
               data={text}
-              className="prose-lg font-light text-gray-700 dark:text-gray-200"
+              className="font-light text-gray-700 prose-lg dark:text-gray-200"
             />
           </div>
 

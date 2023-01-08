@@ -1,5 +1,6 @@
 import { useStoryblokState, getStoryblokApi } from "@storyblok/react";
 import { Layout } from "../components/Layout";
+import { templates } from "../storyblok/templates";
 import StoryblokComponent from "../storyblok";
 
 const resolve_relations = [
@@ -19,7 +20,11 @@ export default function Page({ story, config, footerCta, provider }) {
       footerCta={footerCta.content}
       provider={provider}
     >
-      <StoryblokComponent blok={story.content} {...story} />
+      <StoryblokComponent
+        blok={story.content}
+        components={templates}
+        {...story}
+      />
     </Layout>
   );
 }
