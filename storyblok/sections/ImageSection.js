@@ -9,7 +9,7 @@ const ImageSection = ({ blok }) => {
   const hasSpacing = spacing !== "none";
 
   return (
-    <section {...editable} className={hasSpacing && "py-12 md:py-20"}>
+    <section {...editable} className={clsx(hasSpacing && "py-12 md:py-20")}>
       <div className={clsx("overflow-hidden", isContained && "container")}>
         <div
           className={clsx(
@@ -21,10 +21,10 @@ const ImageSection = ({ blok }) => {
             src={image.filename}
             alt={image.alt}
             width={1920}
-            className={
+            className={clsx(
               !isContained &&
-              "h-96 w-auto max-w-none object-cover sm:h-[32rem] md:h-full"
-            }
+                "h-96 w-auto max-w-none object-cover sm:h-[32rem] md:h-full"
+            )}
           />
         </div>
       </div>

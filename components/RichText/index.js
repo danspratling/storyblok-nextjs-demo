@@ -5,17 +5,15 @@ import {
   MARK_LINK,
   NODE_HEADING,
   NODE_IMAGE,
+  NODE_CODEBLOCK,
 } from "storyblok-rich-text-react-renderer";
+// import dynamic from "next/dynamic";
+import { createId } from "../../utils/createId";
 import Prism from "prismjs";
 import Link from "next/link";
 import Image from "../Image";
-import { createId } from "../../utils/createId";
 
 export default function RichText({ data, ...props }) {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
-
   if (!data.content.length) return null;
 
   return (
@@ -48,7 +46,7 @@ const markResolvers = {
     // Internal links: map to <Link>
     return (
       <Link href={href} target={target}>
-        {children}
+        <a>{children}</a>
       </Link>
     );
   },
@@ -56,10 +54,26 @@ const markResolvers = {
 
 const nodeResolvers = {
   [NODE_HEADING]: (children, { level }) => {
+    // const { createId } = dynamic(() => import("../../utils/createId"), {
+    //   ssr: false,
+    // });
     const Heading = `h${level}`;
     return <Heading id={createId(children)}>{children}</Heading>;
   },
-  [NODE_IMAGE]: (_, props) => (
-    <Image src={props.src} alt={props.alt} {...props} />
-  ),
+  [NODE_IMAGE]: (_, props) => {
+    return <Image src={props.src} alt={props.alt} {...props} />;
+  },
+  [NODE_CODEBLOCK]: (children, props) => {
+    // const Prism = dynamic(() => import("prismjs"));
+
+    useEffect(() => {
+      Prism.highlightAll();
+    }, [Prism]);
+
+    return (
+      <pre className={props.class}>
+        <code className={props.class}>{children}</code>
+      </pre>
+    );
+  },
 };

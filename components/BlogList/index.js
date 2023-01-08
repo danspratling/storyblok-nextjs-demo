@@ -20,7 +20,7 @@ const BlogList = ({ posts }) => {
     setCurrentCategory(
       blogCategories.find((c) => c === params.get("category")) || ""
     );
-  }, [blogCategories]);
+  }, []);
 
   // When the category changes, update the posts & the URL
   useEffect(() => {
@@ -52,7 +52,7 @@ const BlogList = ({ posts }) => {
         router.push(pathname, undefined, { shallow: true });
       }
     }
-  }, [posts, currentCategory, router]);
+  }, [currentCategory]);
 
   return (
     <section className="py-12 md:py-20">

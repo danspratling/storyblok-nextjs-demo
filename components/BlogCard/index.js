@@ -17,23 +17,27 @@ const BlogCard = ({ post, vertical = false }) => {
       }`}
     >
       <Link href={full_slug}>
-        <Image
-          src={featured_image.filename}
-          alt={featured_image.alt}
-          width={456}
-          height={300}
-        />
+        <a>
+          <Image
+            src={featured_image.filename}
+            alt={featured_image.alt}
+            width={456}
+            height={300}
+          />
+        </a>
       </Link>
       <div className="py-4">
         <Link href={full_slug}>
-          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-            {category}
-          </p>
+          <a>
+            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              {category}
+            </p>
 
-          <h2 className="mb-3 text-2xl">{title}</h2>
-          <p className="mb-5 text-lg font-light text-gray-700 line-clamp-3 dark:text-gray-300">
-            {description}
-          </p>
+            <h2 className="mb-3 text-2xl">{title}</h2>
+            <p className="mb-5 text-lg font-light text-gray-700 line-clamp-3 dark:text-gray-300">
+              {description}
+            </p>
+          </a>
         </Link>
 
         <div className="flex items-center gap-3">

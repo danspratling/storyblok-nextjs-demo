@@ -1,5 +1,4 @@
 const StoryblokComponent = ({ blok, components, ...props }) => {
-  console.log(blok.component);
   if (typeof components[blok.component] === "undefined") return null;
 
   const Component = components[blok.component];
