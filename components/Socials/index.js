@@ -29,8 +29,7 @@ const Socials = (props) => {
           >
             <FontAwesomeIcon
               icon={mapSocialIcon[key]}
-              className="fill-current"
-              size="lg"
+              className="w-6 fill-current"
             />
           </Link>
         );

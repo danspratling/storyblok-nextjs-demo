@@ -1,18 +1,38 @@
 import { storyblokEditable } from "@storyblok/react";
+import clsx from "clsx";
 import Button from "../../components/Button";
 import RichText from "../../components/RichText";
 
 const CallToAction = ({ blok }) => {
-  const { title, description, buttons } = blok;
+  const { title, description, buttons, theme = "default" } = blok;
   const editable = storyblokEditable(blok);
 
+  const themeStyles = {
+    default: {
+      background: "",
+      heading: "text-gray-900 dark:text-gray-50",
+      description: "text-gray-700 dark:text-gray-200",
+    },
+    dark: {
+      background: "bg-gray-900 text-gray-50",
+      heading: "text-gray-50",
+      description: "text-gray-300",
+    },
+  };
+
   return (
-    <section {...editable} className="py-12 md:py-20">
+    <section
+      {...editable}
+      className={clsx(themeStyles[theme].background, "py-12 md:py-20")}
+    >
       <div className="container">
         <div className="mx-auto max-w-5xl text-center">
           <h2
             {...editable}
-            className="mb-8 text-2xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl"
+            className={clsx(
+              themeStyles[theme].heading,
+              "mb-8 text-2xl font-normal leading-none tracking-tight md:text-4xl lg:text-5xl"
+            )}
           >
             {title}
           </h2>
@@ -20,7 +40,10 @@ const CallToAction = ({ blok }) => {
           <RichText
             {...editable}
             data={description}
-            className="prose max-w-full text-2xl text-gray-700 dark:text-gray-200"
+            className={clsx(
+              themeStyles[theme].description,
+              "max-w-full text-2xl font-light"
+            )}
           />
 
           {buttons.length ? (
