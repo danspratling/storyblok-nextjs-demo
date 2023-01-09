@@ -22,11 +22,11 @@ export const BlogHero = ({ blok, publishDate, updatedDate }) => {
     <section {...editable} className="py-12 md:py-20">
       <div className="container">
         <div className="max-w-5xl">
-          <div className="inline-flex items-center mb-6 bg-gray-100 rounded-full gap-2 p-[0.4rem] dark:bg-gray-800">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gray-100 p-[0.4rem] dark:bg-gray-800">
             {blok.category && (
               <p
                 {...editable}
-                className="text-white bg-gray-800 rounded-full px-[0.65rem] py-[0.15rem] dark:bg-gray-50 dark:text-gray-900"
+                className="rounded-full bg-gray-800 px-[0.65rem] py-[0.15rem] text-white dark:bg-gray-50 dark:text-gray-900"
               >
                 {blok.category}
               </p>
@@ -55,15 +55,15 @@ export const BlogHero = ({ blok, publishDate, updatedDate }) => {
           <Image
             src={featured_image.filename}
             alt={featured_image.alt}
-            width={1504}
-            height={516}
+            width={1408}
+            height={483}
             className="mb-8"
           />
         )}
 
         {/* Author, Dates & Social Sharing */}
         <div className="flex flex-wrap justify-between">
-          <div className="flex flex-wrap mb-6 gap-4 md:mb-0 md:gap-6 lg:gap-12">
+          <div className="mb-6 flex flex-wrap gap-4 md:mb-0 md:gap-6 lg:gap-12">
             {authors.length ? (
               <InfoCard {...editable} title="Written by">
                 <Image
@@ -104,7 +104,7 @@ export const BlogHero = ({ blok, publishDate, updatedDate }) => {
 export default BlogHero;
 
 const InfoCard = ({ title, children }) => (
-  <div className="flex flex-wrap items-center w-full gap-4 md:block md:w-auto">
+  <div className="flex w-full flex-wrap items-center gap-4 md:block md:w-auto">
     <p className="text-sm text-gray-600 dark:text-gray-300 md:mb-3">{title}</p>
     <div className="flex gap-2">{children}</div>
   </div>

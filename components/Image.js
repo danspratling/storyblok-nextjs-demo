@@ -42,7 +42,9 @@ const Image = ({ src, alt, width, height, loading = "lazy", ...props }) => {
   //       ${url}&dpr=1.5 ${width * 1.5}w,
   //       ${url}&dpr=2 ${width * 2}w,
   //       ${url}&dpr=3 ${width * 3}w`;
-  const sizes = width && `(max-width: ${width}px) 100vw, ${width}px`;
+  const sizes =
+    width &&
+    `(max-width: 768px) 100vw, (max-width: 1200px) ${width}px, ${width}px`;
 
   return (
     // eslint-disable-next-line @next/next/no-img-element

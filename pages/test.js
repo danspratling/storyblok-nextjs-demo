@@ -1,8 +1,8 @@
 /* eslint-disable */
 import { useStoryblokState, getStoryblokApi } from "@storyblok/react";
-import { Layout } from "../components/Layout";
-import StoryblokComponent from "../storyblok";
-import { components } from "../storyblok/components";
+// import { Layout } from "../components/Layout";
+// import StoryblokComponent from "../storyblok";
+// import { components } from "../storyblok/components";
 
 const resolve_relations = [
   "project_section.projects",
@@ -10,21 +10,27 @@ const resolve_relations = [
   "testimonial.project",
 ];
 
-export default function Home({ story, config, footerCta, provider }) {
-  story = useStoryblokState(story, {
-    resolve_relations,
-  });
-  config = useStoryblokState(config);
+export default function Home(
+  {
+    /* story, config, footerCta, provider */
+  }
+) {
+  // story = useStoryblokState(story, {
+  //   resolve_relations,
+  // });
+  // config = useStoryblokState(config);
 
-  return (
-    <Layout
-      blok={config.content}
-      footerCta={footerCta.content}
-      provider={provider}
-    >
-      <StoryblokComponent blok={story.content} components={components} />
-    </Layout>
-  );
+  return null;
+
+  // return (
+  //   <Layout
+  //     blok={config.content}
+  //     footerCta={footerCta.content}
+  //     provider={provider}
+  //   >
+  //     <StoryblokComponent blok={story.content} components={components} />
+  //   </Layout>
+  // );
 }
 
 export async function getStaticProps() {
