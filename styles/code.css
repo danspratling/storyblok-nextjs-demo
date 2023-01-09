@@ -28,71 +28,57 @@ pre[class*="language"] + .toolbar {
   @apply hidden;
 }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
+.hljs-comment,
+.hljs-quote {
   @apply whitespace-pre-wrap text-gray-500;
 }
 
-.token.function-variable,
-.token.function {
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
   @apply text-fuchsia-700;
 }
 
-.token.parameter {
+.hljs-number,
+.hljs-built_in,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
   @apply text-red-600;
 }
 
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol {
+.hljs-attribute {
+  @apply text-blue-500;
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
   @apply text-fuchsia-700;
 }
 
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  @apply text-gray-500;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-  @apply text-gray-500;
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
+.hljs-title,
+.hljs-section {
   @apply text-blue-500;
 }
 
-.token.regex,
-.token.important {
-  @apply text-blue-500;
+.hljs-keyword,
+.hljs-selector-tag {
+  @apply text-fuchsia-700;
 }
 
-.token.important,
-.token.bold {
-  @apply font-semibold;
-}
-.token.italic {
+.hljs-emphasis {
+  font-style: italic;
 }
 
-.token.entity {
-  cursor: help;
-}
-
-.token.deleted {
-  @apply text-red-800;
+.hljs-strong {
+  font-weight: bold;
 }

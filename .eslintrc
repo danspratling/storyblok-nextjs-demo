@@ -4,7 +4,6 @@
     "node": true,
     "es6": true
   },
-  "parser": "@babel/eslint-parser",
   "extends": [
     "eslint:recommended",
     "next/core-web-vitals",

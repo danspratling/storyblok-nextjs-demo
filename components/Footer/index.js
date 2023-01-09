@@ -7,11 +7,11 @@ export const Footer = ({ blok }) => {
   const { footer_logo, footer_description, footer_links } = blok;
 
   return (
-    <footer className="bg-gray-900 py-8 text-white">
+    <footer className="py-8 text-white bg-gray-900">
       <div className="container">
-        <div className="my-8 flex flex-wrap justify-between gap-12 overflow-hidden lg:flex-row lg:flex-nowrap">
+        <div className="flex flex-wrap justify-between my-8 overflow-hidden gap-12 lg:flex-row lg:flex-nowrap">
           <div>
-            <div className="mb-8 block flex-wrap items-center md:flex md:flex-nowrap">
+            <div className="flex-wrap items-center block mb-8 md:flex md:flex-nowrap">
               <Image
                 src={footer_logo.filename}
                 alt={footer_logo.alt}
@@ -29,7 +29,7 @@ export const Footer = ({ blok }) => {
             <div className="flex gap-24">
               {footer_links.map((list, index) => (
                 <div key={index}>
-                  <p className="mb-4 font-semibold uppercase text-gray-400">
+                  <p className="mb-4 font-semibold text-gray-400 uppercase">
                     {list.title}&nbsp;
                   </p>
                   <ul className="mb-12 grid grid-cols-2 gap-x-12 gap-y-4 md:mb-0">

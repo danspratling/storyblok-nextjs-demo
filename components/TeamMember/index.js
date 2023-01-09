@@ -7,7 +7,7 @@ const TeamMember = ({ full_slug, content }) => {
 
   return (
     <Link href={full_slug}>
-      <a className="group mb-4">
+      <a className="mb-4 group">
         <Image
           src={profile_picture.filename}
           alt={profile_picture.alt}
@@ -22,7 +22,7 @@ const TeamMember = ({ full_slug, content }) => {
               {role}
             </p>
           </div>
-          <ArrowRightIcon className="ml-2 w-6 text-gray-400 opacity-0 transition duration-200 group-hover:opacity-100" />
+          <ArrowRightIcon className="w-6 ml-2 text-gray-400 opacity-0 transition duration-200 group-hover:opacity-100" />
         </div>
       </a>
     </Link>

@@ -5,22 +5,22 @@ import BlogCategories from "./BlogCategories";
 
 const BlogList = ({ posts }) => {
   const router = useRouter();
-  const blogCategories = useMemo(
-    () => [...new Set(posts.map((post) => post.content.category))],
-    [posts]
-  );
 
   const [currentCategory, setCurrentCategory] = useState("");
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
   // We probably want to switch to server side rendering here to avoid the flash of unfiltered content
+  const blogCategories = useMemo(
+    () => [...new Set(posts.map((post) => post.content.category))],
+    [posts]
+  );
   useEffect(() => {
     const { search } = window.location;
     const params = new URLSearchParams(search);
     setCurrentCategory(
       blogCategories.find((c) => c === params.get("category")) || ""
     );
-  }, []);
+  }, [blogCategories]);
 
   // When the category changes, update the posts & the URL
   useEffect(() => {
@@ -52,7 +52,7 @@ const BlogList = ({ posts }) => {
         router.push(pathname, undefined, { shallow: true });
       }
     }
-  }, [currentCategory]);
+  }, [posts, currentCategory, router]);
 
   return (
     <section className="py-12 md:py-20">

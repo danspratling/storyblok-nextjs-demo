@@ -17,6 +17,7 @@ export default function Home({ story, config, footerCta, provider }) {
 
   return (
     <Layout
+      story={story}
       blok={config.content}
       footerCta={footerCta.content}
       provider={provider}
@@ -30,7 +31,7 @@ export default function Home({ story, config, footerCta, provider }) {
   );
 }
 
-export async function getStaticProps({ preview }) {
+export async function getStaticProps() {
   const storyblokApi = getStoryblokApi();
 
   const storyblokParams = {

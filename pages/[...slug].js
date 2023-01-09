@@ -16,6 +16,7 @@ export default function Page({ story, config, footerCta, provider }) {
 
   return (
     <Layout
+      story={story}
       blok={config.content}
       footerCta={footerCta.content}
       provider={provider}
