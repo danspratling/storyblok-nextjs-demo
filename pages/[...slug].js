@@ -39,27 +39,23 @@ export async function getStaticProps({ params }) {
   const storyblokApi = getStoryblokApi();
   const slug = params.slug?.join("/");
 
+  const storyblokParams = {
+    version: "draft", // preview ? "draft" : "published",
+    resolve_links: "url",
+    resolve_relations,
+  };
+
   const [page, config, footerCta, team, blogPosts] = await Promise.all([
-    storyblokApi.get(`cdn/stories/${slug}`, {
-      version: "draft", // or 'published'
-      resolve_relations,
-      resolve_links: "url",
-    }),
-    storyblokApi.get("cdn/stories/globals/site-config", {
-      version: "draft",
-      resolve_links: "url",
-    }),
-    storyblokApi.get("cdn/stories/globals/footer-cta", {
-      version: "draft",
-      resolve_links: "url",
-    }),
+    storyblokApi.get(`cdn/stories/${slug}`, storyblokParams),
+    storyblokApi.get("cdn/stories/globals/site-config", storyblokParams),
+    storyblokApi.get("cdn/stories/globals/footer-cta", storyblokParams),
     storyblokApi.get("cdn/stories", {
-      version: "draft",
+      ...storyblokParams,
       content_type: "team_member",
       sort_by: "content.start_date:asc",
     }),
     storyblokApi.get("cdn/stories", {
-      version: "draft",
+      ...storyblokParams,
       content_type: "blog_post",
       sort_by: "content.start_date:desc",
     }),

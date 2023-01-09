@@ -27,8 +27,8 @@ export const Footer = ({ blok }) => {
 
           {footer_links && (
             <div className="flex gap-24">
-              {footer_links.map((list) => (
-                <div>
+              {footer_links.map((list, index) => (
+                <div key={index}>
                   <p className="mb-4 font-semibold uppercase text-gray-400">
                     {list.title}&nbsp;
                   </p>

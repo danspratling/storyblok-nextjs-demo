@@ -30,30 +30,26 @@ export default function Home({ story, config, footerCta, provider }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview }) {
   const storyblokApi = getStoryblokApi();
 
+  const storyblokParams = {
+    version: "draft", // preview ? "draft" : "published",
+    resolve_links: "url",
+    resolve_relations,
+  };
+
   const [page, config, footerCta, team, blogPosts] = await Promise.all([
-    storyblokApi.get(`cdn/stories/error-pages/404`, {
-      version: "draft", // or 'published'
-      resolve_relations,
-      resolve_links: "url",
-    }),
-    storyblokApi.get("cdn/stories/globals/site-config", {
-      version: "draft",
-      resolve_links: "url",
-    }),
-    storyblokApi.get("cdn/stories/globals/footer-cta", {
-      version: "draft",
-      resolve_links: "url",
-    }),
+    storyblokApi.get(`cdn/stories/error-pages/404`, storyblokParams),
+    storyblokApi.get("cdn/stories/globals/site-config", storyblokParams),
+    storyblokApi.get("cdn/stories/globals/footer-cta", storyblokParams),
     storyblokApi.get("cdn/stories", {
-      version: "draft",
+      ...storyblokParams,
       content_type: "team_member",
       sort_by: "content.start_date:asc",
     }),
     storyblokApi.get("cdn/stories", {
-      version: "draft",
+      ...storyblokParams,
       content_type: "blog_post",
       sort_by: "content.start_date:desc",
     }),
