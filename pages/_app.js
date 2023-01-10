@@ -1,6 +1,3 @@
-// import "@fontsource/rubik/latin-300.css";
-import "@fontsource/rubik/variable.css";
-// import "@fontsource/rubik/latin-700.css";
 import "../styles/globals.css";
 
 import { storyblokInit, apiPlugin } from "@storyblok/react";

@@ -27,7 +27,7 @@ const Image = ({ src, alt, width, height, loading = "lazy", ...props }) => {
     width,
     height,
     filters: {
-      quality: 100,
+      quality: 65,
     },
   });
 

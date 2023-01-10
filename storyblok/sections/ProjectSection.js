@@ -17,7 +17,7 @@ const Projects = ({ blok }) => {
     <section {...editable} className="py-12 md:py-20">
       <div className="container">
         {title || description.content[0].content ? (
-          <div className="max-w-5xl mx-auto mb-12 text-center lg:mb-20">
+          <div className="mx-auto mb-12 max-w-5xl text-center lg:mb-20">
             <h2
               {...editable}
               className="mb-8 text-3xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl"
@@ -33,11 +33,11 @@ const Projects = ({ blok }) => {
           </div>
         ) : null}
 
-        <div className="flex flex-wrap mx-auto mb-12 max-w-7xl gap-16 md:flex-nowrap md:items-center lg:mb-20 lg:gap-24">
+        <div className="mx-auto mb-12 flex max-w-7xl flex-wrap gap-16 md:flex-nowrap md:items-center lg:mb-20 lg:gap-24">
           {projectsChunks.map((items, chunkIndex) => (
             <div
               key={chunkIndex}
-              className="w-full grid gap-16 md:w-1/2 md:gap-48"
+              className="grid w-full gap-16 md:w-1/2 md:gap-48"
             >
               {items.map((project, index) => (
                 <ProjectCard key={index} project={project} />
@@ -47,7 +47,7 @@ const Projects = ({ blok }) => {
         </div>
 
         {buttons.length ? (
-          <div className="flex flex-wrap justify-center mt-12 gap-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-3">
             {buttons.map((button, index) => (
               <Button key={index} link={button.link} style={button.style}>
                 {button.label}
@@ -71,8 +71,8 @@ const ProjectCard = ({ project }) => {
       <Image
         src={showcase_image.filename}
         alt={showcase_image.alt}
-        width={720}
-        height={680}
+        width={592}
+        height={600}
       />
 
       <div className="flex items-center justify-between gap-6">
