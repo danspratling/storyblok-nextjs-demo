@@ -18,7 +18,6 @@ export const components = {
   team: dynamic(() => import("./sections/Team")),
   // testimonial_section: dynamic(() => import("./sections/Testimonial")),
   testimonial_section: () => null,
-  text_section: dynamic(() => import("./sections/TextSection")),
 
   // Page Templates
   blog_post: dynamic(() => import("./templates/BlogPost")),

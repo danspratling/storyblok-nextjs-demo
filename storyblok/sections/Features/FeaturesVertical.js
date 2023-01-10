@@ -7,9 +7,9 @@ const Features = ({ blok }) => {
   const editable = storyblokEditable(blok);
 
   return (
-    <section {...editable} className="py-12 bg-primary md:py-20">
+    <section {...editable} className="bg-primary py-12 md:py-20">
       <div className="container flex justify-center">
-        <div className="flex flex-col items-center justify-between w-full gap-8 lg:flex-row lg:gap-12">
+        <div className="flex w-full flex-col items-center justify-between gap-8 lg:flex-row lg:gap-12">
           <div className="flex flex-col items-start lg:max-w-4xl">
             <h2 {...editable} className="mb-5 text-3xl leading-10 lg:text-4xl">
               {title}
@@ -17,7 +17,7 @@ const Features = ({ blok }) => {
 
             <p
               {...editable}
-              className="mb-8 text-xl font-light text-gray-500 leading-8 dark:text-gray-300 lg:text-2xl"
+              className="mb-8 text-xl font-light leading-8 text-gray-500 dark:text-gray-300 lg:text-2xl"
             >
               {description}
             </p>
@@ -33,7 +33,7 @@ const Features = ({ blok }) => {
             ) : null}
           </div>
 
-          <div className="w-full grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+          <div className="grid w-full max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
             {features.map((feature, index) => (
               <Feature key={index} blok={feature} />
             ))}

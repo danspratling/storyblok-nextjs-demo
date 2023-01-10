@@ -70,7 +70,7 @@ export const ContactForm = () => {
 
   return (
     <form
-      className="max-w-3xl mx-auto my-6"
+      className="mx-auto my-6 max-w-3xl"
       onSubmit={handleSubmit(handleFormSubmission)}
       name="contact"
       method="POST"
@@ -151,7 +151,7 @@ export const ContactForm = () => {
         register={register}
       />
 
-      <div className="flex flex-wrap items-center justify-center mt-4 md:justify-start">
+      <div className="mt-4 flex flex-wrap items-center justify-center md:justify-start">
         {status.submitted ? (
           <div className="text-center lg:text-left">
             <TrackGoal goal="Contact" />

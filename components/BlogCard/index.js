@@ -17,12 +17,13 @@ const BlogCard = ({ post, vertical = false }) => {
       }`}
     >
       <Link href={full_slug}>
-        <a>
+        <a className="relative">
           <Image
             src={featured_image.filename}
             alt={featured_image.alt}
             width={456}
             height={300}
+            className="object-cover"
           />
         </a>
       </Link>
@@ -46,7 +47,7 @@ const BlogCard = ({ post, vertical = false }) => {
             alt={authors[0].content.avatar.alt}
             width={48}
             height={48}
-            className="rounded-full"
+            className="rounded-full object-cover"
           />
           <div>
             {authors[0].content.name}

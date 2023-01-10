@@ -1,6 +1,6 @@
 import { storyblokEditable } from "@storyblok/react";
 import clsx from "clsx";
-import Image from "../../components/Image";
+import Image from "next/image";
 
 const ImageSection = ({ blok }) => {
   const editable = storyblokEditable(blok);
@@ -13,19 +13,24 @@ const ImageSection = ({ blok }) => {
       <div className={clsx("overflow-hidden", isContained && "container")}>
         <div
           className={clsx(
-            isContained && "overflow-hidden",
-            "flex max-w-full items-center justify-center"
+            "relative flex max-w-full items-center justify-center",
+            isContained && "overflow-hidden"
           )}
         >
-          <Image
-            src={image.filename}
-            alt={image.alt}
-            width={1920}
+          <div
             className={clsx(
               !isContained &&
-                "h-96 w-auto max-w-none object-cover sm:h-[32rem] md:h-full"
+                "w-full max-w-none object-cover sm:h-[32rem] md:h-[20rem] lg:h-[28rem] xl:h-[32rem]"
             )}
-          />
+          >
+            <Image
+              src={image.filename}
+              alt={image.alt}
+              layout="fill"
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export const PageContents = ({ content, currentSection }) => {
     <nav aria-labelledby="on-this-page-title" className="w-56">
       <h2
         id="on-this-page-title"
-        className="text-sm font-medium font-display text-slate-900 dark:text-white"
+        className="font-display text-sm font-medium text-slate-900 dark:text-white"
       >
         On this page
       </h2>
@@ -36,7 +36,7 @@ export const PageContents = ({ content, currentSection }) => {
 const Contents = ({ data, currentSection }) => {
   const { content } = data;
   return (
-    <ol role="list" className="mt-4 text-sm space-y-3">
+    <ol role="list" className="mt-4 space-y-3 text-sm">
       {render(
         {
           type: "doc",

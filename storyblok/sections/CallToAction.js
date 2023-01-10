@@ -26,7 +26,7 @@ const CallToAction = ({ blok }) => {
       className={clsx(themeStyles[theme].background, "py-12 md:py-20")}
     >
       <div className="container">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="mx-auto max-w-5xl text-center">
           <h2
             {...editable}
             className={clsx(
@@ -47,7 +47,7 @@ const CallToAction = ({ blok }) => {
           />
 
           {buttons.length ? (
-            <div className="flex flex-wrap justify-center mt-10 gap-3">
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
               {buttons.map((button, index) => (
                 <Button key={index} link={button.link} style={button.style}>
                   {button.label}

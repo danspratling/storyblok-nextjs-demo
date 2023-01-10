@@ -51,10 +51,10 @@ const ShareButton = ({ icon, as, color, ...rest }) => {
 
   return (
     <CustomComponent url={window.location.href} className="group" {...rest}>
-      <span className="inline-flex p-3 bg-gray-100 rounded-lg transition duration-200 group-hover:bg-gray-200 dark:bg-gray-800 dark:group-hover:bg-gray-700">
+      <span className="inline-flex rounded-lg bg-gray-100 p-3 transition duration-200 group-hover:bg-gray-200 dark:bg-gray-800 dark:group-hover:bg-gray-700">
         <FontAwesomeIcon
           icon={icon}
-          className="w-6 h-6 rounded-full"
+          className="h-6 w-6 rounded-full"
           style={{ color }}
         />
       </span>
@@ -68,9 +68,9 @@ const CopyLinkButton = () => {
   if (linkCopied) {
     setTimeout(() => setLinkCopied(false), 3000);
     return (
-      <button className="inline-flex p-3 bg-gray-100 rounded-lg gap-2 transition duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
+      <button className="inline-flex gap-2 rounded-lg bg-gray-100 p-3 transition duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
         Link Copied
-        <CheckIcon className="w-6 h-6" />
+        <CheckIcon className="h-6 w-6" />
       </button>
     );
   }
@@ -82,10 +82,10 @@ const CopyLinkButton = () => {
           ?.writeText(window?.location?.href)
           .then(() => setLinkCopied(true))
       }
-      className="inline-flex p-3 bg-gray-100 rounded-lg gap-2 transition duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+      className="inline-flex gap-2 rounded-lg bg-gray-100 p-3 transition duration-200 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
     >
       Copy Link
-      <DocumentDuplicateIcon className="w-6 h-6" />
+      <DocumentDuplicateIcon className="h-6 w-6" />
     </button>
   );
 };

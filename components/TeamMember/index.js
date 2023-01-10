@@ -7,13 +7,13 @@ const TeamMember = ({ full_slug, content }) => {
 
   return (
     <Link href={full_slug}>
-      <a className="mb-4 group">
+      <a className="group relative mb-4">
         <Image
           src={profile_picture.filename}
           alt={profile_picture.alt}
           width={310}
           height={310}
-          className="mb-4"
+          className="mb-4 object-cover"
         />
         <div className="flex items-center justify-between">
           <div>
@@ -22,7 +22,7 @@ const TeamMember = ({ full_slug, content }) => {
               {role}
             </p>
           </div>
-          <ArrowRightIcon className="w-6 ml-2 text-gray-400 opacity-0 transition duration-200 group-hover:opacity-100" />
+          <ArrowRightIcon className="ml-2 w-6 text-gray-400 opacity-0 transition duration-200 group-hover:opacity-100" />
         </div>
       </a>
     </Link>

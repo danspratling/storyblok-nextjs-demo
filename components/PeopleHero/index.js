@@ -10,7 +10,7 @@ const PeopleHero = ({ blok }) => {
     <>
       <section
         {...editable}
-        className="py-12 min-h-[24rem] bg-gradient-to-br from-white to-gray-200 dark:bg-gradient-to-tr dark:from-gray-900 dark:to-gray-700 md:py-20"
+        className="min-h-[24rem] bg-gradient-to-br from-white to-gray-200 py-12 dark:bg-gradient-to-tr dark:from-gray-900 dark:to-gray-700 md:py-20"
       >
         <div className="container relative">
           <div className="grid-cols-2 md:grid">
@@ -53,9 +53,9 @@ const PeopleHero = ({ blok }) => {
                   {...editable}
                   src={profile_picture.filename}
                   alt={profile_picture.alt}
-                  width="420"
-                  height="480"
-                  className="max-w-full shadow-2xl sm:max-w-xs xl:max-w-none"
+                  width={420}
+                  height={480}
+                  className="max-w-full object-cover shadow-2xl sm:max-w-xs xl:max-w-none"
                 />
               </div>
             )}
@@ -69,7 +69,7 @@ const PeopleHero = ({ blok }) => {
             <RichText
               {...editable}
               data={bio}
-              className="max-w-3xl font-light text-gray-700 prose-lg dark:text-gray-200 md:text-xl 2xl:max-w-4xl"
+              className="prose-lg max-w-3xl font-light text-gray-700 dark:text-gray-200 md:text-xl 2xl:max-w-4xl"
             />
           </div>
         </section>

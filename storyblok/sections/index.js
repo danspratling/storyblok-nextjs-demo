@@ -16,5 +16,4 @@ export const sections = {
   team: dynamic(() => import("./Team")),
   // testimonial_section: dynamic(() => import("./Testimonial")),
   testimonial_section: () => null,
-  text_section: dynamic(() => import("./TextSection")),
 };

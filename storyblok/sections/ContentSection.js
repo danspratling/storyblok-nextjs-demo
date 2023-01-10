@@ -3,12 +3,6 @@ import { storyblokEditable } from "@storyblok/react";
 import Image from "../../components/Image";
 import RichText from "../../components/RichText";
 
-const imageSizes = {
-  lg: 994,
-  md: 768,
-  sm: 576,
-};
-
 const imageBasis = {
   lg: "basis-8/12",
   md: "basis-6/12",
@@ -35,17 +29,19 @@ const ContentSection = ({ blok }) => {
             <RichText
               {...editable}
               data={text}
-              className="font-light text-gray-700 prose-lg dark:text-gray-200"
+              className="prose-lg font-light text-gray-700 dark:text-gray-200"
             />
           </div>
 
           {image?.filename && (
-            <div className={clsx("flex-shrink-0", imageBasis[size])}>
-              <Image
-                src={image.filename}
-                alt={image.alt}
-                width={imageSizes[size]}
-              />
+            <div className={clsx("w-full flex-shrink-0", imageBasis[size])}>
+              <div className="relative aspect-square w-full">
+                <Image
+                  src={image.filename}
+                  alt={image.alt}
+                  className="object-contain"
+                />
+              </div>
             </div>
           )}
         </div>

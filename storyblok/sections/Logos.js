@@ -10,7 +10,7 @@ const Logos = ({ blok }) => {
   return (
     <section {...editable} className="py-12 md:py-20">
       <div className="container">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="mx-auto max-w-5xl text-center">
           <h2 className="mb-8 text-3xl font-normal leading-none tracking-tight text-gray-900 dark:text-gray-50 md:text-4xl lg:text-5xl">
             {title}
           </h2>
@@ -31,14 +31,15 @@ const Logos = ({ blok }) => {
           )}
         </div>
 
-        <div className="flex flex-wrap items-center justify-center max-w-5xl mx-auto gap-x-20 gap-y-4">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-4 lg:gap-x-20">
           {logos.map((logo, index) => (
-            <Image
-              key={index}
-              src={logo.filename}
-              alt={logo.alt}
-              className="w-auto py-6 max-h-24"
-            />
+            <div key={index} className="relative h-12 w-32">
+              <Image
+                src={logo.filename}
+                alt={logo.alt}
+                className="max-h-24 w-auto object-contain py-6"
+              />
+            </div>
           ))}
         </div>
       </div>
