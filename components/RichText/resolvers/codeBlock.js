@@ -8,7 +8,7 @@ hljs.registerLanguage("html", html);
 hljs.registerLanguage("css", css);
 hljs.registerLanguage("javascript", javascript);
 
-const NodeCodeblock = (children, props) => {
+const NodeCodeblock = ({ children, ...props }) => {
   const language = props.class.split("-")[1];
 
   const myHtml = hljs.highlight(children.flat().join(""), {

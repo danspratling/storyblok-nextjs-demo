@@ -1,6 +1,6 @@
 import Image from "../../Image";
 
-const NodeImage = (_, props) => {
+const NodeImage = (props) => {
   return <Image src={props.src} alt={props.alt} {...props} />;
 };
 

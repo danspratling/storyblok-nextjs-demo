@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const MarkLink = (children, props) => {
+const MarkLink = ({ children, ...props }) => {
   const { linktype, href, target } = props;
 
   // Email links: add `mailto:` scheme and map to <a>
